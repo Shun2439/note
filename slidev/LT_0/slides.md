@@ -46,7 +46,7 @@ layout: two-cols
 
 今回は編集について少し話します
 
-::right::
+:: right ::
 
 <iframe width="400" height="250" src="https://www.youtube.com/embed/P7LNU9HYr7M?si=mxYdq5mT5ujmE5ZG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -99,12 +99,12 @@ layout: default
 
 |キー|動作|
 |---|---|
-|i|インサートモードに入る|
 |h|左へカーソルを移動|
 |j|下へカーソルを移動|
 |k|上へカーソルを移動|
 |l|右へカーソルを移動|
-|ci"|""の中身を消してインサートモードに入る|
+|i|インサートモードに入る|
+|I|行頭に移動してインサートモードに入る|
 |A|行末に移動してインサートモードに入る|
 
 ---
@@ -118,6 +118,16 @@ layout: default
 |o|一行下に移ってインサートモードに入る|
 |yy|一行ヤンク（コピー）|
 |p|ペースト|
+
+---
+
+|||
+|---|---|
+|\<CTRL\>d|下に１ページスクロール|
+|\<CTRL\>u|上に１ページスクロール|
+|gg|ファイルの最初に飛ぶ|
+|G|ファイルの最後に飛ぶ|
+|ci"|""の中身を消してインサートモードに入る|
 
 超基本はこのくらい
 
