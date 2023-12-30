@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -55,15 +57,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static var _message = 'ok.';
-
-  static final _janken = <String>['グー', 'チョキ', 'パー'];
+  String _message = 'ok.';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('じゃんけん'),
+        title: const Text('RW test'),
       ),
       body: Center(
         child: Column(
@@ -81,26 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: "Roboto"),
               ),
             ),
-            ElevatedButton(
-                onPressed: buttonPressed,
-                child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Icon(Icons.android, size: 50.0))),
             FloatingActionButton(
-                onPressed: buttonPressed,
-                elevation: 20,
-                child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Icon(Icons.android_sharp, size: 50.0)))
+              onPressed: () {
+                setState(() {
+                  // _message = ReadFile;
+                });
+              },
+              elevation: 20,
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Icon(Icons.android_sharp, size: 50.0),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  void buttonPressed() {
-    setState(() {
-      _message = (_janken..shuffle()).first;
-    });
+  void WriteFile() async {
+    await File('assets/test.txt').writeAsString('Hello!');
+  }
+
+  Future<String> ReadFile() async {
+    try {
+      final file = File('assets/test.txt');
+      return file.readAsString();
+    } catch (e) {
+      return "error!";
+    }
   }
 }
