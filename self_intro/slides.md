@@ -22,8 +22,6 @@ monacoTypesSource: local # or cdn or none
 
 # 最初のLT
 
-小林 俊太 [IE系 情報コース]
-
 <div class="abs-br m-6 flex gap-2">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
@@ -44,9 +42,11 @@ transition: fade-out
 
 # 概要
 
+- 3-2 IE系 情報コース
+- 出身は小川村
 - vimmerのなりそこない
-- HNはShun2439
-- 「長野高専に入学」という罪で寮に服役中
+- HNはShun2439（たまに\_shun2439）
+- 寮に服役中
 - 過疎なド田舎出身
 - ゴミレポジェネレーター
 
@@ -93,7 +93,6 @@ transition: slide-up
 
 - unison square garden
 - alexandros
-- ive
 
 皆さんはどうですか？
 
@@ -112,6 +111,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 - git
 - gdb
 - bat
+- screen
 
 ---
 level: 2
@@ -143,7 +143,7 @@ preload: false
 ## 外出
 最近あまりできてない。テスト後はよくでかける。ついてきてもいいよ。
 ## 読書
-最近あまりできてない。「図書館に篭りたい」という夢がある(無理)
+最近あまりできてない。
 
 ---
 
@@ -164,7 +164,7 @@ preload: false
 ## 開発(？)
 - nas with raspberry pi
 
-家族にicl0udのヘビーユーザーがおり、app1eに貢ぐのがつらいとのことで作成にいたった。
+家族にicl0udのヘビーユーザーがおり、app1eに貢ぐのがつらいとのことで作成にいたった。まだ途中。。。
 - TJSSF
 
 なにもできてない。ずっと資料読んでる。助けて~
