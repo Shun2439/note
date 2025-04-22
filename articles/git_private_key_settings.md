@@ -4,25 +4,28 @@ emoji: "🌊"
 type: "tech"
 topics:
   - "git"
-published: false
+published: true
 published_at: "2023-04-16 06:40"
 ---
 
 初めてなので間違っていたら教えてください！
 
-ちなみに環境はwindows11（2023/04/16/時点の最新）です ~~（mac book使いたい🤑）~~ 。
+ちなみに環境はWindows11（2023/04/16/時点の最新）です。
 
 ## Gitをインストール
+
 省略させていただきます。
 
 設定ではコマンドラインを使います ~~（怖い）~~ 。
 
 ## Git Bashを使う
+
 🪟をおして、gitと検索。
 
 Git bashを起動します。
 
 ## 作業するディレクトリを作る
+
 好きな場所で
 
 `mkdir <作業するディレクトリ>`
@@ -45,7 +48,7 @@ Git bashを起動します。
 
     Gitをインストールした場所（多分programfileらへん）で`/Git/etc/ssh/`に移動します。
 
-    `code ./ssh_config`で設定します ~~（vimを使いたい）~~ 。
+    `code -n ./ssh_config`で設定します。
 
     少しわかりずらいのですが、`<SrverName>`には`<RepositoryName>`を含めないようにしてください。
     ```
@@ -58,6 +61,7 @@ Git bashを起動します。
     を追加して保存して閉じます。
 
 ## 作業ディレクトリに戻ってクローン
+
 `git clone git+ssh://<UserName>@<ServerName>/<RepositoryName>`
 
 `dir`で確認してみます。
@@ -69,4 +73,6 @@ Git bashを起動します。
                0 File(s)              0 bytes
                3 Dir(s)  272,542,224,384 bytes fre
 ```
+
 おつかれさまでした。
+
