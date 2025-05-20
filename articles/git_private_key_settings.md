@@ -16,13 +16,13 @@ published_at: "2023-04-16 06:40"
 
 省略させていただきます。
 
-設定ではコマンドラインを使います ~~（怖い）~~ 。
+設定ではコマンドラインを使います。
 
 ## Git Bashを使う
 
-🪟をおして、gitと検索。
+🪟キーを押して、gitと検索。
 
-Git bashを起動します。
+Git Bashを起動します。
 
 ## 作業するディレクトリを作る
 
@@ -48,10 +48,11 @@ Git bashを起動します。
 
     Gitをインストールした場所（多分programfileらへん）で`/Git/etc/ssh/`に移動します。
 
-    `code -n ./ssh_config`で設定します。
+    `code -n ./ssh_config`などで設定します。
 
     少しわかりずらいのですが、`<SrverName>`には`<RepositoryName>`を含めないようにしてください。
-    ```
+
+    ```txt:ssh_config(一部)
     Host <ServerName>
         User git
         HostName <ServerName> 
