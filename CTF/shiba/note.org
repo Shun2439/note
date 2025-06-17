@@ -1,0 +1,92 @@
+#+TITLE: shiba-ctf solver
+#+DATE: <2025-06-16 月>
+
+* note
+
+previous: [[https://zenn.dev/link/comments/41b6c3a5d23478]]
+
+** COMMENT demo
+
+#+begin_src python :results output
+  print(ord('a'))
+  print(chr(97))
+#+end_src
+
+#+RESULTS:
+: 97
+: a
+
+** DONE SOS
+
+[[https://miniwebtool.com/ja/morse-code-decoder/]]
+
+🚩 src_text{sctf{LICENSE}}
+
+** DONE No meaning
+
+[[https://cyberchef.io/]]のsubstituteを使用する。
+
+|    <c>     |             <c>              |
+|    項目    |             内容             |
+| plaintext  | src_text{zqrvohjwfsxkdcygpe} |
+| Ciphertext | src_text{sctfiahdernwpxvbuo} |
+|            |                              |
+
+flag: src_text{sctf{plaintext_letters_substituted_with_different_ciphertext_letters}}
+
+** DONE Zigzag
+
+Rail Fence Cipher Decodeを使用する
+
+src_text{key}へ5をセットする。
+
+flag: src_text{sctf{r@1l_f3nc3_c1ph3r_15_@_53cur3_4nd_345y_70_und3r574nd}}
+
+** TODO Cylinder
+
+#+begin_src python :tangle solver/cylinder.py :results output
+  text = "s{__05pcy440t3t0r_d3rfu3g_p}"
+#+end_src
+
+#+RESULTS:
+
+** TODO Square
+
+** TODO AtCipher
+
+** DONE Numbers
+
+　スクリプトを書いてみた。
+
+#+begin_src python :results output
+  numbers = [115, 99, 116, 102, 123, 78, 117, 109, 98, 101, 114, 115, 95, 97, 114, 101, 95, 97, 95, 99, 111, 109, 109, 111, 110, 95, 108, 97, 110, 103, 117, 97, 103, 101, 125]
+  ans = ""
+
+  for i in numbers:
+      ans += chr(i)
+
+  print(ans)
+#+end_src
+
+#+RESULTS:
+: sctf{Numbers_are_a_common_language}
+
+*** COMMENT with Rust
+
+To use rust, we need toml...
+
+#+begin_src rust
+  use ascii_converter::*;
+
+  fn main() {
+      let numbers = vec![115, 99, 116, 102, 123, 78, 117, 109, 98, 101, 114, 115, 95, 97, 114, 101, 95, 97, 95, 99, 111, 109, 109, 111, 110, 95, 108, 97, 110, 103, 117, 97, 103, 101, 125];
+
+      match decimals_to_string(&input){
+  	Ok(num) => println!("* Output: {}", num),
+  	Err(e) => println!("* Error: {}", e),
+      };
+  }
+#+end_src
+
+#+RESULTS:
+
