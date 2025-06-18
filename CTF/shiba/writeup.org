@@ -1,7 +1,7 @@
 #+TITLE: shiba-ctf writeup
 #+DATE: <2025-06-16 月>
 
-* note
+* writeup
 
 previous: [[https://zenn.dev/link/comments/41b6c3a5d23478]]
 
@@ -95,14 +95,14 @@ To use rust, we need toml...
 - [[https://qiita.com/0a24/items/6b3b9e0c89bf74d8d96e]]
 
 #+NAME: 🚩
-#+begin_src python :results output
+#+begin_src python :results output :exports both
   from Crypto.Util.number import long_to_bytes
   out = 1279736731193177234995154651896954849329117386600140361605729277808417294476644446533121189156265083663343198097886984854368748206461
   print(long_to_bytes(out))
 #+end_src
 
 #+RESULTS: 🚩
-: b'sctf{pycryptodome_is_one_of_the_most_important_library}'
+: b'sctf{base64_enc0ded_s7ring_15_being_one}'
 
 Python is useful!
 
@@ -129,4 +129,32 @@ Python is useful!
 
 #+RESULTS:
 : Decimal 65 -> Bytes: b'A' -> Text: 'A'
+
+** DONE Compression
+
+どうやらbase64の様子。
+
+#+begin_src python :results output
+  import base64
+
+  s = "c2N0ZntiYXNlNjRfZW5jMGRlZF9zN3JpbmdfMTVfYmVpbmdfb25lfQ=="
+
+  print(base64.b64decode(s))
+#+end_src
+
+#+RESULTS:
+: b'sctf{base64_enc0ded_s7ring_15_being_one}'
+
+[[https://cyberchef.io/]]に投げればいい。
+
+#+BEGIN_COMMENT
+#+begin_src rust
+  fn main() {
+      println!("Hello!");
+  }
+#+end_src
+
+#+RESULTS:
+: Hello!
+#+END_COMMENT
 
