@@ -1,4 +1,4 @@
-#+TITLE: shiba-ctf solver
+#+TITLE: shiba-ctf writeup
 #+DATE: <2025-06-16 月>
 
 * note
@@ -89,6 +89,8 @@ To use rust, we need toml...
 #+RESULTS:
 
 ** DONE long_to_bytes
+
+<2025-06-18 水>
 
 - [[https://qiita.com/0a24/items/6b3b9e0c89bf74d8d96e]]
 
