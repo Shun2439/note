@@ -20,19 +20,18 @@ previous: [[https://zenn.dev/link/comments/41b6c3a5d23478]]
 
 [[https://miniwebtool.com/ja/morse-code-decoder/]]
 
-🚩 src_text{sctf{LICENSE}}
+🚩: src_text{sctf{LICENSE}}
 
 ** DONE No meaning
 
 [[https://cyberchef.io/]]のsubstituteを使用する。
 
 |    <c>     |             <c>              |
-|    項目    |             内容             |
+|    項目     |             内容              |
 | plaintext  | src_text{zqrvohjwfsxkdcygpe} |
 | Ciphertext | src_text{sctfiahdernwpxvbuo} |
-|            |                              |
 
-flag: src_text{sctf{plaintext_letters_substituted_with_different_ciphertext_letters}}
+🚩: src_text{sctf{plaintext_letters_substituted_with_different_ciphertext_letters}}
 
 ** DONE Zigzag
 
@@ -40,7 +39,7 @@ Rail Fence Cipher Decodeを使用する
 
 src_text{key}へ5をセットする。
 
-flag: src_text{sctf{r@1l_f3nc3_c1ph3r_15_@_53cur3_4nd_345y_70_und3r574nd}}
+🚩: src_text{sctf{r@1l_f3nc3_c1ph3r_15_@_53cur3_4nd_345y_70_und3r574nd}}
 
 ** TODO Cylinder
 
@@ -64,12 +63,11 @@ flag: src_text{sctf{r@1l_f3nc3_c1ph3r_15_@_53cur3_4nd_345y_70_und3r574nd}}
 
   for i in numbers:
       ans += chr(i)
-
+      
   print(ans)
 #+end_src
 
 #+RESULTS:
-: sctf{Numbers_are_a_common_language}
 
 *** COMMENT with Rust
 
@@ -89,4 +87,44 @@ To use rust, we need toml...
 #+end_src
 
 #+RESULTS:
+
+** DONE long_to_bytes
+
+- [[https://qiita.com/0a24/items/6b3b9e0c89bf74d8d96e]]
+
+#+NAME: 🚩
+#+begin_src python :results output
+  from Crypto.Util.number import long_to_bytes
+  out = 1279736731193177234995154651896954849329117386600140361605729277808417294476644446533121189156265083663343198097886984854368748206461
+  print(long_to_bytes(out))
+#+end_src
+
+#+RESULTS: 🚩
+: b'sctf{pycryptodome_is_one_of_the_most_important_library}'
+
+Python is useful!
+
+*** pycryptodome setup
+
+#+begin_src shell
+  python -m pip install -U pip
+  python -m pip install pycrptodome
+#+end_src
+
+*** COMMENT demo
+
+- [[https://qiita.com/orangehouse/items/78454a71cb40b00c4f47]]
+
+#+begin_src python :results output
+  from Crypto.Util.number import long_to_bytes
+
+  decimal_ascii_A = 65
+  bytes_A = long_to_bytes(decimal_ascii_A)
+  text_A = bytes_A.decode('ascii')
+
+  print(f"Decimal {decimal_ascii_A} -> Bytes: {bytes_A} -> Text: '{text_A}'")
+#+end_src
+
+#+RESULTS:
+: Decimal 65 -> Bytes: b'A' -> Text: 'A'
 
