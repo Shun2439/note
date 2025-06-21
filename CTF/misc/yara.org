@@ -1,0 +1,36 @@
+
+* notes
+<2025-06-21 ìy 09:46>
+
+[[https://syu-m-5151.hatenablog.com/entry/2016/09/15/045006][Ç»Ç…Ç‚ÇÁ(yara)]]
+
+aptÇ≈ì¸ÇÍÇƒÇ¢Ç¢ÇÃÇæÇÎÇ§Ç©ÅH
+
+#+begin_src text :tangle my_first_rule
+  rule ExampleRule
+  {
+    strings:
+    $my_text_string = "sample text"
+    $my_hex_string = { E2 34 A1 C8 23 FB }
+    condition:
+      $my_text_string or $my_hex_string
+  }
+#+end_src
+
+#+begin_src text :tangle sample.txt
+	  sample text
+#+end_src
+
+#+begin_src C :includes '(<stdio.h> <stdint.h>) :results output :tangle sample.c
+  for(int32_t i = 0; i < 5; i++) {
+    puts("I am malware!");
+  }
+#+end_src
+
+#+RESULTS:
+: I am malware!
+: I am malware!
+: I am malware!
+: I am malware!
+: I am malware!
+
