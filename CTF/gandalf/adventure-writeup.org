@@ -1,0 +1,10 @@
+* Adventure
+
+<2025-06-30 Mon 17:40>
+
+** Level 1
+
+#+begin_example
+Turn the MAGIC to base64
+#+end_example
+
