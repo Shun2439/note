@@ -4,7 +4,9 @@
 
 [[https://zenn.dev/link/comments/6428dfb3d5900c][previous]]
 
-** Bytes and Big Integers
+** TODO Bytes and Big Integers
+
+python not working on WSL
 
 #+begin_src python :results output :exports both
   from Crypto.Util.number import long_to_bytes
@@ -14,12 +16,16 @@
 
 ** XOR Starter
 
+*** Demo
+
 #+begin_src ruby
   "%b" % (0b0110 ^ 0b1010)
 #+end_src
 
 #+RESULTS:
 : 1100
+
+*** Solver
 
 #+begin_src ruby :results output :exports both
     label = "label"
@@ -28,4 +34,14 @@
 
 #+RESULTS:
 : crypto{aloha}
+
+* TODO XOR Properties
+
+#+begin_src ruby
+  key1 = 'a6c8b6733c9b22de7bc0253266a3867df55acde8635e19c73313'
+  key2_key1 = '37dcb292030faa90d07eec17e3b1c6d8daf94c35d4c9191a5e1e'
+  key2__key3 = 'c1545756687e7573db23aa1c3452a098b71a7fbf0fddddde5fc1'
+  flag_key1_key3_key2 = '04ee9855208a2cd59091d04767ae47963170d1660df7f56f5faf'
+
+#+end_src
 
