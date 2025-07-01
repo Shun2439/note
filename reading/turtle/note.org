@@ -1,0 +1,25 @@
+*
+
+<2025-07-01 Tue 09:17>
+
+#+begin_src ruby :results output :tangle src/main.rb :mkdirp src
+  #!/usr/bin/env ruby
+
+  def main
+    a = 0
+    turtle = 100
+    s = 0
+
+    until a >= turtle do
+      a += 10
+      turtle += 1
+      s += 1
+    end
+
+    print "took: #{s}[s]"
+  end
+
+  main
+#+end_src
+
+#+RESULTS:
