@@ -1,6 +1,8 @@
 /node_modules
 
+#Editor
 *~
 *#
+*.org_archive
 *.swp
 
