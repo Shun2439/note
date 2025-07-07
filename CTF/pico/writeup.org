@@ -1,0 +1,31 @@
+* TODO picoCTF
+- State "TODO"       from              [2025-07-07 Mon 23:45] \\
+  [[https://play.picoctf.org/]]
+
+** DONE DISKO 1
+CLOSED: [2025-07-08 Tue 00:06]
+
+#+CAPTION: solver
+#+begin_src shell :results output
+    wget https://artifacts.picoctf.net/c/537/disko-1.dd.gz
+    gzip -d ./disko-1.dd.gz
+    strings ./disko-1.dd | grep pico
+    rm ./disko-1.dd
+#+end_src
+
+#+RESULTS:
+#+begin_example
+:/icons/appicon
+# $Id: piconv,v 2.8 2016/08/04 03:15:58 dankogai Exp $
+piconv -- iconv(1), reinvented in perl
+  piconv [-f from_encoding] [-t to_encoding]
+  piconv -l
+  piconv -r encoding_alias
+  piconv -h
+B<piconv> is perl version of B<iconv>, a character encoding converter
+a technology demonstrator for Perl 5.8.0, but you can use piconv in the
+piconv converts the character encoding of either STDIN or files
+Therefore, when both -f and -t are omitted, B<piconv> just acts
+picoCTF{1t5_ju5t_4_5tr1n9_be6031da}
+#+end_example
+
