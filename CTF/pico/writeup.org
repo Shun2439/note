@@ -6,7 +6,7 @@
 CLOSED: [2025-07-08 Tue 00:06]
 
 #+CAPTION: solver
-#+begin_src shell :results output
+#+begin_src shell :results output :exports both
     wget https://artifacts.picoctf.net/c/537/disko-1.dd.gz
     gzip -d ./disko-1.dd.gz
     strings ./disko-1.dd | grep pico
