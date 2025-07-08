@@ -1,6 +1,6 @@
 * AlpacaHack
 
-** TODO simple-login
+** TODO simple-login                                                    :web:
 :PROPERTIES:
 :CATEGORY: web
 :END:
