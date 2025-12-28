@@ -1,13 +1,55 @@
-* AlpacaHack
+#+STARTUP: indent show2levels
+#+AUTHOR: Shun2439
+#+EMAIL: Shun2439@duck.com
+#+DATE: <2025-10-16 木>
 
-** TODO simple-login                                                    :web:
+#+OPTIONS: H:1 author:nil
+
+* AlpacaHack [1/3]
+** DONE [[https://alpacahack.com/daily/challenges/alpacahack-2100][AlpacaHack 2100]]
+CLOSED: [2025-12-29 月 08:18]
+# <2025-12-02 火 20:18>
+[[https://alpacahack.com/daily?month=2100-01][2100年1月 のカレンダー]]
+
+🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
+** TODO [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
+
+#+begin_src shell
+      curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/1703ffac-8c0c-4a2a-a8ff-bb11a932ed56/a-fact-of-CTF.tar.gz
+
+      tar -xzf a-fact-of-CTF
+#+end_src
+
+#+begin_src python :tangle solver.py :results output
+  from sympy import factorint
+
+  primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293]
+
+  try:
+      with open('a-fact-of-CTF/output.txt', 'r') as f:
+          ct_hex = f.read().strip() # 余計な文字を取り除く
+
+      ct = int(ct_hex, 16) # 10進数の整数に変換
+
+      factors = factorint(ct) # 素因数分解 ct = 2**a * 3**b * 5**c ... factorsは辞書型になる
+
+      flag = "".join(chr(factors[p]) for p in primes if p in factors)
+      print(flag)
+  except FileNotFoundError:
+      print("File not found")
+#+end_src
+
+#+RESULTS:
+: Alpaca{prime_factorization_solves_everything}
+
+** TODO simple-login                                                  :web:
 :PROPERTIES:
 :CATEGORY: web
 :END:
 
 - State "TODO"       from              [2025-07-06 Sun 02:12] \\
   not yet
-  
+
 #+CAPTION: Directory Structure
 #+begin_example
  .
