@@ -11,7 +11,9 @@ CLOSED: [2025-12-29 月 08:18]
 # <2025-12-02 火 20:18>
 [[https://alpacahack.com/daily?month=2100-01][2100年1月 のカレンダー]]
 
-🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
+# 🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
+
+🚩: ~Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}~
 ** DONE [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
 CLOSED: [2025-12-29 月 08:41]
 
