@@ -1,0 +1,86 @@
+* leaked-flag-checker
+** COMMENT Note
+** COMMENT 問題
+#+begin_src c
+  // gcc -o challenge challenge.c
+  #include <stdio.h>
+  #include <string.h>
+
+  int main(void) {
+      char input[32];
+      const char xor_flag[] = "REDACTED";
+      size_t flag_len = strlen(xor_flag);
+
+      printf("Enter flag: ");
+      fflush(stdout);
+      scanf("%31s", input);
+
+      /* 1. Check Length */
+      if(strlen(input) != flag_len) {
+          printf("Wrong length\n");
+          return 1;
+      }
+      for(size_t i = 0; i < flag_len; i++) {
+          if((input[i] ^ 7) != xor_flag[i]) {
+              printf("Wrong at index %zu\n", i);
+              return 1;
+          }
+      }
+      printf("Correct\n");
+      return 0;
+  }
+#+end_src
+** 解法
+バイナリから ~xor_flag~ の値を抽出して、各バイトを再度7と排他的論理和をとれば元のフラグが得られる。
+
+*** 推測
+まずは ~Alpaca{}~ が含まれていると考えて、変換してみる。
+
+#+begin_src ruby :tangle demo.rb :results value drawer
+  def main
+    p "Hello!"
+
+    flag_plain = "Alpaca{}"
+
+    p flag_plain.chars.map { |c| (c.ord ^ 7).chr }.join
+  end
+
+  main
+#+end_src
+
+#+RESULTS:
+:results:
+Fkwfdf|z
+:end:
+
+*** 検索
+
+文字列が得られたので、バイナリの中から検索する。
+
+#+begin_src shell :results output pp
+  hexdump -C challenge | grep -A 2 "Fkwfdf|"
+#+end_src
+
+#+RESULTS:
+: 00001200  45 f8 31 c0 48 b8 46 6b  77 66 64 66 7c 6b 48 89  |E.1.H.Fkwfdf|kH.|
+: 00001210  45 c2 48 b8 7c 6b 72 64  6c 7e 7a 00 48 89 45 c8  |E.H.|krdl~z.H.E.|
+: 00001220  48 c7 45 b8 0d 00 00 00  48 8d 05 d5 0d 00 00 48  |H.E.....H......H|
+
+
+*** 変換
+
+検索した文字列の中から ~z~ で終わるところまでを変換するとフラグが得られる。
+
+#+begin_src ruby :tangle solver.rb :results value pp
+  def main
+      xor_flag = "Fkwfdf|krdl~z"
+
+    p "FLAG: " + xor_flag.chars.map { |c| (c.ord ^ 7).chr }.join
+  end
+
+  main
+#+end_src
+
+#+RESULTS:
+: "FLAG: Alpaca{lucky}"
+
