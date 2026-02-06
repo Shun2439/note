@@ -3,7 +3,7 @@
 
 リクエストを送ってみたら得られた。
 
-#+begin_src shell :results output pp
+#+begin_src shell :results output pp :exports both
 curl http://34.170.146.252:52496/secret.html
 #+end_src
 
