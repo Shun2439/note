@@ -5,12 +5,13 @@
 
 #+OPTIONS: H:1 author:nil
 
-* AlpacaHack [1/1]
+* AlpacaHack [2/2]
 - Note taken on [2026-01-30 金 21:13] \\
   #+begin_src shell
     gem install pwn
   #+end_src
 -----
+- [X] [[file:leaked-flag-checker/leaked-flag-checker.org][Leaked Flag Checker]]
 - [X] [[file:magic-engine/magic-engine.org][Magic Engine]]
 -----
 ** DONE [[https://alpacahack.com/daily/challenges/alpacahack-2100][AlpacaHack 2100]]
