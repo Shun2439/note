@@ -5,7 +5,14 @@
 
 #+OPTIONS: H:1 author:nil
 
-* AlpacaHack [2/3]
+* AlpacaHack [1/1]
+- Note taken on [2026-01-30 金 21:13] \\
+  #+begin_src shell
+    gem install pwn
+  #+end_src
+-----
+- [X] [[file:magic-engine/magic-engine.org][Magic Engine]]
+-----
 ** DONE [[https://alpacahack.com/daily/challenges/alpacahack-2100][AlpacaHack 2100]]
 CLOSED: [2025-12-29 月 08:18]
 # <2025-12-02 火 20:18>
@@ -14,15 +21,68 @@ CLOSED: [2025-12-29 月 08:18]
 # 🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
 
 🚩: ~Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}~
+** TODO linear-coffee-generator
+#+begin_src python
+  import os
+  import hashlib
+  from Crypto.Util.number import *
+  from Crypto.Cipher import AES
+  from Crypto.Util.Padding import pad, unpad
+
+  flag = os.environ.get("FLAG", "Alpaca{dummy}").encode()
+
+  # You don't need to focus on encrypt_flag/decrypt_flag :)
+  def encrypt_flag(pt, params):
+      key = hashlib.sha256(str(params).encode()).digest()
+      cipher = AES.new(key, AES.MODE_CBC)
+      return cipher.iv + cipher.encrypt(pad(pt, 16))
+
+  def decrypt_flag(ct, params):
+      key = hashlib.sha256(str(params).encode()).digest()
+      cipher = AES.new(key, AES.MODE_CBC, iv=ct[:16])
+      return unpad(cipher.decrypt(ct[16:]), 16)
+
+  class LCG:
+      def __init__(self):
+          self.p = getPrime(64) # e.g. 31
+          self.a = getRandomRange(1, self.p) # e.g. 24
+          self.b = getRandomRange(1, self.p) # e.g. 3
+          self.s = getRandomRange(1, self.p) # e.g. 5
+
+      def serve_coffee(self):
+          self.s = (self.a * self.s + self.b) % self.p
+          return self.s
+
+
+  lcg = LCG()
+  enc_flag = encrypt_flag(flag, (lcg.p, lcg.a, lcg.b, lcg.s)).hex()
+
+  print("#1 order:", lcg.serve_coffee())
+  print("#2 order:", lcg.serve_coffee())
+  print("#3 order:", lcg.serve_coffee())
+  print("#4 order:", lcg.serve_coffee())
+  # If you can recover p, a, b, and s, you can get the flag using decrypt_flag(bytes.fromhex(enc_flag), (p, a, b, s))!
+  print("encrypted flag:", enc_flag)
+#+end_src
+
+self.s = (self.a * self.s + self.b) % self.p
+self.s = (self.a * (self.a * self.s + self.b) % self.p + self.b) % self.p
+self.s = (self.a * (self.a * (self.a * self.s + self.b) % self.p + self.b) % self.p + self.b) % self.p
+self.s = (self.a * (self.a * (self.a * (self.a * self.s + self.b) % self.p + self.b) % self.p + self.b) % self.p + self.b) % self.p
+*** LCG
+Linear Congruential Generator
+
+a, b, p
 ** DONE [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
 CLOSED: [2025-12-29 月 08:41]
 
 #+begin_src shell
-      curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/1703ffac-8c0c-4a2a-a8ff-bb11a932ed56/a-fact-of-CTF.tar.gz
+  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/1703ffac-8c0c-4a2a-a8ff-bb11a932ed56/a-fact-of-CTF.tar.gz
 
-      tar -xzf a-fact-of-CTF
+  tar -xzf a-fact-of-CTF.tar.gz
 #+end_src
 
+#+NAME: solver
 #+begin_src python :tangle solver.py :results output :exports both
   from sympy import factorint
 
@@ -32,20 +92,32 @@ CLOSED: [2025-12-29 月 08:41]
       with open('a-fact-of-CTF/output.txt', 'r') as f:
           ct_hex = f.read().strip() # 余計な文字を取り除く
 
-      ct = int(ct_hex, 16) # 10進数の整数に変換
+      # 10進数の整数に変換
+      # デフォルトでは出力できない
+      ct = int(ct_hex, 16)
 
-      factors = factorint(ct) # 素因数分解 ct = 2**a * 3**b * 5**c ... factorsは辞書型になる
+      # 素因数分解
+      # ct = 2**a * 3**b * 5**c ...
+      # factorsは辞書型になる
+      factors = factorint(ct)
 
+      # 指数を文字列に変換
       flag = "".join(chr(factors[p]) for p in primes if p in factors)
       print(flag)
   except FileNotFoundError:
       print("File not found")
 #+end_src
 
-#+RESULTS:
+#+RESULTS: solver
 : Alpaca{prime_factorization_solves_everything}
 
-** TODO simple-login                                                  :web:
+** TODO one-p-rsa
+#+begin_src shell
+  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/b8b220dc-2d4a-4057-ac21-eb6ac57ccda5/one-p-rsa.tar.gz
+
+  tar -xzf one-p-rsa.tar.gz
+#+end_src
+** TODO simple-login                                                :web:
 :PROPERTIES:
 :CATEGORY: web
 :END:

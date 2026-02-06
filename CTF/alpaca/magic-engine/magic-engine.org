@@ -1,0 +1,39 @@
+
+* Magic Engine
+
+リクエストを送ってみたら得られた。
+
+#+begin_src shell :results output pp
+curl http://34.170.146.252:52496/secret.html
+#+end_src
+
+#+RESULTS:
+#+begin_example
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Magic Engine - secret</title>
+</head>
+<body>
+  <h1>Secret page</h1>
+  <p>Wow, how did you get here?</p>
+  <p>Alpaca{Host_works_just_like_Magic}</p>
+</body>
+</html>
+#+end_example
+
+** メモ
+
+| オプション      | 説明                                 | 例                                    |
+|------------------+---------------------------------------+----------------------------------------|
+| ~-o [ファイル名]~ | 結果をファイルに保存する            | ~curl -o index.html https://example.com~ |
+| ~-L~               | リダイレクト先まで追いかける        | ~curl -L https://google.com~             |
+| ~-I~               | ヘッダー情報のみ取得する            | ~curl -I https://example.com~            |
+| ~-s~               | 進捗状況などを非表示（静か）にする | ~curl -s https://example.com~            |
+
+*** 認証が必要なページの場合
+
+#+begin_src shell
+curl -u user:password https://example.com
+#+end_src
