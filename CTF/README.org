@@ -1,0 +1,7 @@
+* writeups
+
+- [[file:alpaca/writeup.org][AlpacaHack]]
+- [[file:shiba/writeup.org][Shiba CTF]]
+- [[file:pico/writeup.org][picoCTF]]
+- [[file:cryptohack/writeup.org][CRYPTOHACK]]
+- [[file:gandalf/writeup.org][GANDALF]]
