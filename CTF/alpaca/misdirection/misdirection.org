@@ -1,0 +1,40 @@
+
+* misdirection
+とりあえず ~strings~ にかけてみる。
+#+begin_src shell :results output pp :exports both
+# strings misdirection
+strings misdirection|head -n 20
+#+end_src
+
+#+RESULTS:
+#+begin_example
+/lib64/ld-linux-x86-64.so.2
+puts
+strlen
+__libc_start_main
+__cxa_finalize
+printf
+__isoc99_scanf
+libc.so.6
+GLIBC_2.7
+GLIBC_2.2.5
+GLIBC_2.34
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+PTE1
+u+UH
+<uCH
+}detpecca_si_galf_siht_yhw_dnatsrednu_s'teL_!stargnoC{acaplAlpaca{This_is_NOT_a_flag_This_must_be_rejected_by_program!}
+Input > 
+%95s
+#+end_example
+
+とりあえず怪しい文字列を反転させてみる。
+
+#+begin_src ruby :results output pp :exports both
+print "}detpecca_si_galf_siht_yhw_dnatsrednu_s'teL_!stargnoC{acaplA".reverse
+#+end_src
+
+#+RESULTS:
+: Alpaca{Congrats!_Let's_understand_why_this_flag_is_accepted}
