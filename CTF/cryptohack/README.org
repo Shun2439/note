@@ -1,6 +1,9 @@
-* Cryptohack
 
-<2025-06-30 Mon 16:08>
+#+OPTIONS: todo:nil stat:nil
+
+* Cryptohack [2/3]
+
+# <2025-06-30 Mon 16:08>
 
 [[https://zenn.dev/link/comments/6428dfb3d5900c][previous]]
 
@@ -35,6 +38,31 @@ python not working on WSL
 #+RESULTS:
 : crypto{aloha}
 
+** DONE Keyed Permutations
+CLOSED: [2026-02-27 金 23:59]
+:LOGBOOK:
+- CLOSING NOTE [2026-02-27 金 23:59] \\
+  #+BEGIN_EXPORT html
+  <details>
+    <summary>The flag</summary>
+    ~crypto{bijection}~
+  </details>
+  #+END_EXPORT
+:END:
+Advanced Encryption Standard
+
+Bijection,全単射
+** DONE Resisting Bruteforce
+CLOSED: [2026-02-28 土 00:21]
+:LOGBOOK:
+- CLOSING NOTE [2026-02-28 土 00:21] \\
+  #+BEGIN_EXPORT html
+    <details>
+      <summary>The flag</summary>
+      ~crypto{biclique}~
+    </details>
+  #+END_EXPORT
+:END:
 * TODO XOR Properties
 
 #+begin_src ruby
