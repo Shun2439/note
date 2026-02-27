@@ -1,7 +1,7 @@
 
 #+OPTIONS: todo:nil stat:nil
 
-* Cryptohack [2/4]
+* Cryptohack [3/4]
 
 # <2025-06-30 Mon 16:08>
 
@@ -63,7 +63,12 @@ CLOSED: [2026-02-28 土 00:21]
     </details>
   #+END_EXPORT
 :END:
-** TODO Structure of AES
+** DONE Structure of AES
+CLOSED: [2026-02-28 土 00:38]
+:LOGBOOK:
+- CLOSING NOTE [2026-02-28 土 00:38] \\
+  ?
+:END:
 *** DL
 #+begin_src shell :results silent
 curl -OL https://cryptohack.org/static/challenges/matrix_e1b463dddbee6d17959618cf370ff1a5.py
@@ -71,7 +76,7 @@ curl -OL https://cryptohack.org/static/challenges/matrix_e1b463dddbee6d17959618c
 *** Solver
 ~sum~ によって 1 行にして、バイト列に変換する。
 
-#+begin_src python :results output
+#+begin_src python :results output :exports both
 def bytes2matrix(text):
     """ Converts a 16-byte array into a 4x4 matrix.  """
     return [list(text[i:i+4]) for i in range(0, len(text), 4)]
