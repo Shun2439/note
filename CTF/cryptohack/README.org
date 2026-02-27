@@ -1,7 +1,7 @@
 
 #+OPTIONS: todo:nil stat:nil
 
-* Cryptohack [2/3]
+* Cryptohack [2/4]
 
 # <2025-06-30 Mon 16:08>
 
@@ -63,6 +63,36 @@ CLOSED: [2026-02-28 土 00:21]
     </details>
   #+END_EXPORT
 :END:
+** TODO Structure of AES
+*** DL
+#+begin_src shell :results silent
+curl -OL https://cryptohack.org/static/challenges/matrix_e1b463dddbee6d17959618cf370ff1a5.py
+#+end_src
+*** Solver
+~sum~ によって 1 行にして、バイト列に変換する。
+
+#+begin_src python :results output
+def bytes2matrix(text):
+    """ Converts a 16-byte array into a 4x4 matrix.  """
+    return [list(text[i:i+4]) for i in range(0, len(text), 4)]
+
+def matrix2bytes(matrix):
+    """ Converts a 4x4 matrix into a 16-byte array.  """
+    return bytes(sum(matrix, []))
+
+matrix = [
+    [99, 114, 121, 112],
+    [116, 111, 123, 105],
+    [110, 109, 97, 116],
+    [114, 105, 120, 125],
+]
+
+print(matrix2bytes(matrix))
+#+end_src
+
+#+RESULTS:
+: b'crypto{inmatrix}'
+
 * TODO XOR Properties
 
 #+begin_src ruby
