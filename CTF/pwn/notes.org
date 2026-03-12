@@ -25,9 +25,25 @@ echo -n "<MAG" >> solution.cimg
 * implicit relative paths, from /
 # implicit,暗黙の
 
-* Dealing with Data [2/2]
+* Dealing with Data [7/7]
 Playing With Programs.
 
+** DONE What's the password?
+CLOSED: [2026-03-12 木 23:48]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:48] \\
+  #+begin_src shell
+  echo "ccxhwppk" | /challenge/runme
+  #+end_src
+:END:
+** DONE ... and again!
+CLOSED: [2026-03-12 木 23:48]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:48] \\
+  #+begin_src shell
+  echo "lkucejgl" | /challenge/runme
+  #+end_src
+:END:
 ** DONE Newline Troubles
 CLOSED: [2026-03-09 月 06:28]
 :LOGBOOK:
@@ -42,9 +58,37 @@ CLOSED: [2026-03-09 月 06:28]
 Echo のときに改行をなくす ~-n~ オプションを付けて実行する。
 
 #+begin_src shell
-echo -n "nltyxzlg" | /challenge/runme
+printf "nltyxzlg" | /challenge/runme
 #+end_src
 
+** DONE Reasoning about files
+CLOSED: [2026-03-12 木 23:46]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:46] \\
+  #+begin_src shell
+  printf "xbsqpnmr" > xsaa
+
+  /challenge/runme
+  #+end_src
+:END:
+** DONE Specifying Filename
+CLOSED: [2026-03-12 木 23:42]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:42] \\
+  #+begin_src shell
+  printf "qxubcqzf" > xsaa
+
+  /challenge/runme xsaa
+  #+end_src
+:END:
+** DONE Binary and Hex Encoding
+CLOSED: [2026-03-12 木 23:41]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:41] \\
+  #+begin_src shell
+  printf "85" | /challenge/runme
+  #+end_src
+:END:
 ** DONE More Hex
 CLOSED: [2026-03-12 木 23:24]
 :LOGBOOK:
@@ -52,6 +96,6 @@ CLOSED: [2026-03-12 木 23:24]
   Just run this.
 
   #+begin_src shell
-  echo -n "baa4d5a1d9fb9883" | /challenge/runme
+  printf "baa4d5a1d9fb9883" | /challenge/runme
   #+end_src
 :END:
