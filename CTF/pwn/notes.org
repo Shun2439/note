@@ -1,0 +1,57 @@
+* TODO Path Traversal 1
+* DONE File formats: Magic Numbers(Python)
+CLOSED: [2026-03-01 日 23:56]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-01 日 23:56] \\
+  ?
+:END:
+# cIMG image?
+
+要点はイメージを作ることじゃなくて、バイナリをリバースエンジニアリングすることで
+プログラム、さらにはプログラムで使用される論理とデータ構造を理解する過程を経験す
+ることだよ。
+
+# イメージってっそのまま画像のこと？
+
+** 解法
+#+begin_src shell
+echo -n "<MAG" >> solution.cimg
+#+end_src
+
+#+begin_src shell
+/challenge/cimg solution.cimg
+#+end_src
+
+* implicit relative paths, from /
+# implicit,暗黙の
+
+* Dealing with Data [2/2]
+Playing With Programs.
+
+** DONE Newline Troubles
+CLOSED: [2026-03-09 月 06:28]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-09 月 06:28] \\
+  ~printf~ でもできるみたい。
+
+  #+begin_src shell
+  printf "nltyxzlg" | /challenge/runme
+  #+end_src
+:END:
+
+Echo のときに改行をなくす ~-n~ オプションを付けて実行する。
+
+#+begin_src shell
+echo -n "nltyxzlg" | /challenge/runme
+#+end_src
+
+** DONE More Hex
+CLOSED: [2026-03-12 木 23:24]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-12 木 23:24] \\
+  Just run this.
+
+  #+begin_src shell
+  echo -n "baa4d5a1d9fb9883" | /challenge/runme
+  #+end_src
+:END:
