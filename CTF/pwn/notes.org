@@ -1,3 +1,5 @@
+#+STARTUP: show2levels
+
 * TODO Path Traversal 1
 * DONE File formats: Magic Numbers(Python)
 CLOSED: [2026-03-01 日 23:56]
@@ -25,7 +27,7 @@ echo -n "<MAG" >> solution.cimg
 * implicit relative paths, from /
 # implicit,暗黙の
 
-* Dealing with Data [7/7]
+* Dealing with Data [10/10]
 Playing With Programs.
 
 ** DONE What's the password?
@@ -97,5 +99,34 @@ CLOSED: [2026-03-12 木 23:24]
 
   #+begin_src shell
   printf "baa4d5a1d9fb9883" | /challenge/runme
+  #+end_src
+:END:
+
+** DONE Decoding Hex
+CLOSED: [2026-03-13 金 00:04]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-13 金 00:04] \\
+  #+begin_src shell
+  python3 -c 'import sys; sys.stdout.buffer.write(bytes.fromhex("b1f6dd9dccf8cb83"))' | /challenge/runme
+  #+end_src
+:END:
+
+** DONE Decoding Practice
+CLOSED: [2026-03-13 金 00:14]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-13 金 00:14] \\
+  #+begin_src shell
+  python3 -c 'import sys; s="1101000011010001100100111010000010010100101100111111010011011001"; b=int(s, 2).to_bytes(len(s)//8, "big"); sys.stdout.buffer.write(b)' | /challenge/runme
+  #+end_src
+:END:
+
+** DONE Encoding Practice
+CLOSED: [2026-03-14 土 23:54]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-14 土 23:54] \\
+  Add ~, end=""~ in ~print~ function.
+
+  #+begin_src shell
+  python3 -c 'print("".join(f"{b:08b}" for b in b"\xdc\xe2\xf8\xe2\xce\xc0\xeb\xb6"), end="")'|/challenge/runme
   #+end_src
 :END:
