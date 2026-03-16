@@ -27,7 +27,7 @@ echo -n "<MAG" >> solution.cimg
 * implicit relative paths, from /
 # implicit,暗黙の
 
-* Dealing with Data [10/10]
+* Dealing with Data [12/19]
 Playing With Programs.
 
 ** DONE What's the password?
@@ -130,3 +130,43 @@ CLOSED: [2026-03-14 土 23:54]
   python3 -c 'print("".join(f"{b:08b}" for b in b"\xdc\xe2\xf8\xe2\xce\xc0\xeb\xb6"), end="")'|/challenge/runme
   #+end_src
 :END:
+
+** DONE Hex-encoding ASCII
+CLOSED: [2026-03-15 日 19:44]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-15 日 19:44] \\
+  #+begin_src python
+  bytes.fromhex(entered_password.decode("l1"))
+  #+end_src
+  ~l1~ -> ISO-8859-1
+  #+begin_src shell
+  python3 -c 'print("hveetgwy".encode().hex())' > xsaa
+
+  /challenge/runme xsaa
+  #+end_src
+:END:
+~str~ ing についてお話しましょう。Python では文字列は人間のために用いられます。
+** DONE Nested Encoding
+CLOSED: [2026-03-16 月 23:42]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-16 月 23:42] \\
+  文字列を変えるのを忘れた
+:END:
+#+begin_src shell
+python3 -c 'print("hnupggrr".encode().hex().encode().hex().encode().hex().encode().hex())' > xsaa
+
+/challenge/runme xsaa
+#+end_src
+** TODO Hex-encoding UTF-8
+
+** TODO UTF Mixup
+
+** TODO Modifying Encoded Data
+
+** TODO Decoding Bae64
+
+** TODO Encoding Base64
+
+** TODO Dealing with Obfuscation
+
+** TODO Dealing with Obfuscation 2
