@@ -11,6 +11,7 @@ CLOSED: [2026-03-22 日 19:16]
 このレベルはチュートリアルで比較的簡単です。
 #+end_quote
 
+** Exploit
 ~$~ が出てきたところでエンタキーを押すとフラグが得られる。
 
 #+begin_src python
@@ -34,7 +35,59 @@ p.interactive()
 # flag = p.recvline()
 # print(f"flag is: {flag}")
 #+end_src
-* TODO Level 1.0
+* DONE Level 1.0
+CLOSED: [2026-03-25 水 02:48]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-25 水 02:48] \\
+  # 1 day streak...
+:END:
+#+begin_quote
+このチャレンジでは bypass_me 関数を読むことと、チャレンジを完了するために pwntools を使用する必要があります。
+#+end_quote
+** 実験
+~0xdeadbeef~ は下位バイトから順にメモリに配置される。
+なので、 ~buf~ にはそのような形式になる値を渡す。
+
+#+HEADER: :var buf="\xef\xbe\xad\xde"
+#+begin_src C :includes '(<stdio.h> <string.h>) :results output :exports both
+unsigned int magic = 0xdeadbeef;
+if (!strncmp(buf, (char *)&magic, 4)) {
+    puts("True");
+}
+else {
+    puts("False");
+}
+#+end_src
+
+#+RESULTS:
+: True
+
+** Exploit
+~$~ が出てきたところでエンタキーを押すとフラグが得られる。
+
+#+begin_src python
+from pwn import *
+
+# Set architecture, os and log level
+context(arch="amd64", os="linux", log_level="info")
+
+# Load the ELF file and execute it as a new process.
+challenge_path = "/challenge/pwntools-tutorials-level1.0"
+p = process(challenge_path)
+
+payload = p32(0xdeadbeef)
+# Send the payload after the string ":)\n###\n" is found.
+p.sendafter(":)\n###\n", payload)
+
+# Receive flag from the process
+
+# p.recvuntil(b"flag is: ")
+
+# flag = p.recvline()
+# print(f"flag is: {flag}")
+
+p.interactive()
+#+end_src
 * TODO Level 2.0
 * TODO Level 2.1
 * TODO Level 2.2
