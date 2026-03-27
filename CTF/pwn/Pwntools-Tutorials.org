@@ -88,7 +88,95 @@ p.sendafter(":)\n###\n", payload)
 
 p.interactive()
 #+end_src
-* TODO Level 2.0
+* TODO Level 1.1
+蝶のポケモン
+
+1. ~buf[0] ==== 'p' && buf[1] == 0x15~
+2. ~num == 0x75bcd15~
+3. 
+
+#+begin_src C
+if (buf[0] != 'p' || buf[1] != 0x15) {
+    flag = 0;
+    goto out;
+}
+
+memcpy(&num, buf + 2, 4);
+if (num != 123456789) {
+    flag = 0;
+    goto out;
+}
+
+if (strncmp(buf + 6, "Bypass Me:)", 11)) {
+    flag = 0;
+    goto out;
+}
+#+end_src
+
+
+#+begin_src python :results output :exports both
+print(hex(123456789))
+#+end_src
+
+#+RESULTS:
+: 0x75bcd15
+
+~p32(0x75bcd15)~
+
+** Exploit
+#+begin_src python
+from pwn import *
+
+# Set architecture, os and log level
+context(arch="amd64", os="linux", log_level="info")
+
+# Load the ELF file and execute it as a new process.
+challenge_path = "/challenge/pwntools-tutorials-level1.1"
+p = process(challenge_path)
+
+payload = b'p' + b'\x15' + p32(0x75bcd15) + b"Bypass Me:)"
+
+# Send the payload after the string ":)\n###\n" is found.
+p.sendafter(":)\n###\n", payload)
+
+# Receive flag from the process
+
+p.interactive()
+#+end_src
+* DONE Level 2.0
+CLOSED: [2026-03-27 金 09:12]
+:LOGBOOK:
+- CLOSING NOTE [2026-03-27 金 09:12] \\
+  # 1 day streak...
+:END:
+
+~mov~ によって ~rax~ に値を代入する。
+
+#+begin_src python
+from pwn import *
+
+def print_lines(io):
+    info("Printing io received lines")
+    while True:
+        try:
+            line = io.recvline()
+            success(line.decode())
+        except EOFError:
+            break
+
+# Set architecture, os and log level
+context(arch="amd64", os="linux", log_level="info")
+
+# Load the ELF file and execute it as a new process.
+challenge_path = "/challenge/pwntools-tutorials-level2.0"
+
+p = process(challenge_path)
+
+# Send the payload after the string "(up to 0x1000 bytes): \n" is found.
+p.sendafter("Please give me your assembly in bytes", asm("mov rax, 0x12345678"))
+
+print_lines(p)
+#+end_src
 * TODO Level 2.1
 * TODO Level 2.2
 * TODO Level 2.3
