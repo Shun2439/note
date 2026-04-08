@@ -5,25 +5,87 @@
 
 #+OPTIONS: H:1 author:nil
 
-* AlpacaHack [3/3]
+* AlpacaHack [11/18]
 - Note taken on [2026-01-30 金 21:13] \\
   #+begin_src shell
     gem install pwn
   #+end_src
 -----
+- [X] [[AlpacaHack 2100]]
+- [X] [[a fact of CTF]]
+- [ ] Emojify
 - [X] [[file:leaked-flag-checker/leaked-flag-checker.org][Leaked Flag Checker]]
+- Integer Writer
+- [X] [[file:simpleoverflow/simpleoverflow.org][simpleoverflow]]
+- [ ] [[one-p-rsa]]
+- [X] [[Linear Coffee Generator]]
+- [X] read-a-binary
 - [X] [[file:magic-engine/magic-engine.org][Magic Engine]]
+- [ ] [[file:the-world/the-world.org][The World]]
 - [X] [[file:misdirection/misdirection.org][misdirection]]
------
-** DONE [[https://alpacahack.com/daily/challenges/alpacahack-2100][AlpacaHack 2100]]
+- [ ] [[file:compressor/compressor.org][Compressor]]
+- [ ] [[file:nc-magic/nc-magic.org][nc magic]]
+- [X] [[file:simple-rop/simple-rop.org][simple ROP]]
+- [ ] [[file:you-are-being-redirected/you-are-being-redirected.org][You are being redirected]]
+- [X] [[file:alpaillier/alpaillier.org][Alpaillier]]
+- [X] [[file:bars/bars.org][Bars]]
+- [ ] [[simple-login]]
+** DONE AlpacaHack 2100
 CLOSED: [2025-12-29 月 08:18]
 # <2025-12-02 火 20:18>
+
+[[https://alpacahack.com/daily/challenges/alpacahack-2100][問題ページ]]
+
 [[https://alpacahack.com/daily?month=2100-01][2100年1月 のカレンダー]]
 
 # 🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
 
 🚩: ~Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}~
-** TODO linear-coffee-generator
+** DONE [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
+CLOSED: [2025-12-29 月 08:41]
+
+#+begin_src shell
+  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/1703ffac-8c0c-4a2a-a8ff-bb11a932ed56/a-fact-of-CTF.tar.gz
+
+  tar -xzf a-fact-of-CTF.tar.gz
+#+end_src
+
+#+NAME: solver
+#+begin_src python :tangle solver.py :results output :exports both
+  from sympy import factorint
+
+  primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293]
+
+  try:
+      with open('a-fact-of-CTF/output.txt', 'r') as f:
+          ct_hex = f.read().strip() # 余計な文字を取り除く
+
+      # 10進数の整数に変換
+      # デフォルトでは出力できない
+      ct = int(ct_hex, 16)
+
+      # 素因数分解
+      # ct = 2**a * 3**b * 5**c ...
+      # factorsは辞書型になる
+      factors = factorint(ct)
+
+      # 指数を文字列に変換
+      flag = "".join(chr(factors[p]) for p in primes if p in factors)
+      print(flag)
+  except FileNotFoundError:
+      print("File not found")
+#+end_src
+
+#+RESULTS: solver
+: Alpaca{prime_factorization_solves_everything}
+
+** TODO one-p-rsa
+#+begin_src shell
+  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/b8b220dc-2d4a-4057-ac21-eb6ac57ccda5/one-p-rsa.tar.gz
+
+  tar -xzf one-p-rsa.tar.gz
+#+end_src
+** TODO Linear Coffee Generator
 #+begin_src python
   import os
   import hashlib
@@ -75,50 +137,6 @@ self.s = (self.a * (self.a * (self.a * (self.a * self.s + self.b) % self.p + sel
 Linear Congruential Generator
 
 a, b, p
-** DONE [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
-CLOSED: [2025-12-29 月 08:41]
-
-#+begin_src shell
-  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/1703ffac-8c0c-4a2a-a8ff-bb11a932ed56/a-fact-of-CTF.tar.gz
-
-  tar -xzf a-fact-of-CTF.tar.gz
-#+end_src
-
-#+NAME: solver
-#+begin_src python :tangle solver.py :results output :exports both
-  from sympy import factorint
-
-  primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293]
-
-  try:
-      with open('a-fact-of-CTF/output.txt', 'r') as f:
-          ct_hex = f.read().strip() # 余計な文字を取り除く
-
-      # 10進数の整数に変換
-      # デフォルトでは出力できない
-      ct = int(ct_hex, 16)
-
-      # 素因数分解
-      # ct = 2**a * 3**b * 5**c ...
-      # factorsは辞書型になる
-      factors = factorint(ct)
-
-      # 指数を文字列に変換
-      flag = "".join(chr(factors[p]) for p in primes if p in factors)
-      print(flag)
-  except FileNotFoundError:
-      print("File not found")
-#+end_src
-
-#+RESULTS: solver
-: Alpaca{prime_factorization_solves_everything}
-
-** TODO one-p-rsa
-#+begin_src shell
-  curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/b8b220dc-2d4a-4057-ac21-eb6ac57ccda5/one-p-rsa.tar.gz
-
-  tar -xzf one-p-rsa.tar.gz
-#+end_src
 ** TODO simple-login                                                :web:
 :PROPERTIES:
 :CATEGORY: web

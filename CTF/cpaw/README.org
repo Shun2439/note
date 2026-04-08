@@ -1,0 +1,46 @@
+
+* DONE Classical Cipher
+CLOSED: [2026-04-08 水 20:44]
+:LOGBOOK:
+- CLOSING NOTE [2026-04-08 水 20:44] \\
+  #+begin_verse
+  cpaw{Caesar_cipher_is_classical_cipher}
+  #+end_verse
+:END:
+
+#+begin_src C :results output :main no :tangle solve.c
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
+int32_t main(int32_t argc, char** argv) {
+  if(argc != 3) {
+    return EXIT_FAILURE;
+  }
+
+  int32_t shift = atoi(argv[2]) % 26;
+  /* マイナスにも対応 */
+  if(shift < 0) { shift += 26; }
+
+  for(int32_t i = 0; argv[1][i] != '\0'; i++) {
+    /* 大文字の場合 */
+    if(isupper(argv[1][i])) {
+      printf("%c", (argv[1][i] - 'A' + shift) % 26 + 'A');
+    }
+    /* 小文字の場合 */
+    else if (islower(argv[1][i])) {
+      printf("%c", (argv[1][i] - 'a' + shift) % 26 + 'a');
+    }
+    /* 記号とかの場合 */
+    else {
+      printf("%c", argv[1][i]);
+    }
+  }
+  return EXIT_SUCCESS;
+}
+#+end_src
+
+#+begin_src shell :results output silent
+gcc solve.c
+#+end_src
