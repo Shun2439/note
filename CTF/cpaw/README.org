@@ -8,6 +8,9 @@ CLOSED: [2026-04-08 水 20:44]
   #+end_verse
 :END:
 
+[[https://ctf.cpaw.site/questions.php?qnum=6][問題ページ]]
+
+** ソルバー
 #+begin_src C :results output :main no :tangle solve.c
 #include <stdint.h>
 #include <stdlib.h>
@@ -15,6 +18,7 @@ CLOSED: [2026-04-08 水 20:44]
 #include <ctype.h>
 
 int32_t main(int32_t argc, char** argv) {
+  /* 引数の簡易チェック */
   if(argc != 3) {
     return EXIT_FAILURE;
   }
@@ -41,6 +45,18 @@ int32_t main(int32_t argc, char** argv) {
 }
 #+end_src
 
-#+begin_src shell :results output silent
+** 実行
+#+begin_src shell :results output
 gcc solve.c
+./a.out fsdz{Fdhvdu_flskhu_lv_fodvvlfdo_flskhu} -3
 #+end_src
+
+#+RESULTS:
+: cpaw{Caesar_cipher_is_classical_cipher}
+** 環境
+#+begin_src shell :results output :exports result
+gcc --version|head -n 1
+#+end_src
+
+#+RESULTS:
+: gcc (GCC) 15.2.0
