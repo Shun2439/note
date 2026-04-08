@@ -55,7 +55,7 @@ gcc solve.c
 : cpaw{Caesar_cipher_is_classical_cipher}
 
 ** 環境
-#+begin_src shell :results output :exports result
+#+begin_src shell :results output :exports results
 gcc --version|head -n 1
 #+end_src
 
