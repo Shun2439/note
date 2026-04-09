@@ -1,4 +1,4 @@
-#+OPTIONS: d:nil
+# #+OPTIONS: d:nil
 
 * DONE Classical Cipher
 CLOSED: [2026-04-08 水 20:44]
@@ -70,7 +70,7 @@ CLOSED: [2026-04-09 木 22:04]
 
 実行時にフラグ、整数の順で引数を与える。
 
-とりあえず動かしてみる。(なお、出力に特殊文字が含まれて、github でうまく表示されないので、silent にしている。)
+とりあえず動かしてみる。(なお、出力に特殊文字が含まれて、GitHub でうまく表示されないので、silent にしている。)
 
 #+begin_src C :cmdline abcde_fghij_klnmo_pqrst 3 :results output silent :main no
 #include <stdio.h>
@@ -181,6 +181,8 @@ CLOSED: [2026-04-09 木 23:46]
   cpaw{vernam!!}
   #+end_verse
 :END:
+
+[[https://ctf.cpaw.site/questions.php?qnum=23][問題ページ]]
 
 とりあえずファイルを調べる。
 
