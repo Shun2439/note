@@ -4,9 +4,9 @@
 CLOSED: [2026-04-08 水 20:44]
 :LOGBOOK:
 - CLOSING NOTE [2026-04-08 水 20:44] \\
-  #+begin_example
+  #+begin_verse
   cpaw{Caesar_cipher_is_classical_cipher}
-  #+end_example
+  #+end_verse
 :END:
 
 [[https://ctf.cpaw.site/questions.php?qnum=6][問題ページ]]
@@ -61,16 +61,20 @@ gcc --version|head -n 1
 CLOSED: [2026-04-09 木 22:04]
 :LOGBOOK:
 - CLOSING NOTE [2026-04-09 木 22:04] \\
-  #+begin_example
+  #+begin_verse
   cpaw{Your_deciphering_skill_is_great}
-  #+end_example
+  #+end_verse
 :END:
 
 [[https://ctf.cpaw.site/questions.php?qnum=20][問題ページ]]
 
 実行時にフラグ、整数の順で引数を与える。
 
-とりあえず動かしてみる。(なお、出力に特殊文字が含まれて、github でうまく表示されないので、silent にしている。)
+とりあえず動かしてみる。
+
+#+begin_notes
+なお、出力に特殊文字が含まれて、github でうまく表示されないので、silent にしている。
+#+end_notes
 
 #+begin_src C :cmdline abcde_fghij_klnmo_pqrst 3 :results output silent :main no
 #include <stdio.h>
@@ -94,21 +98,21 @@ int main(int argc, char* argv[]){
 よって、 ~key~ となる値は 4 であると推測でき、復号には暗号化したときと同様の処理が使えるので、与えられたプログラムにそれぞれ渡す。
 ちなみに手動で解くと以下のようになる。
 
-#+begin_example
+#+begin_export ascii
 ruoYced_ehpigniriks_i_llrg_stae
-#+end_example
+#+end_export
 
-#+begin_example
+#+begin_export ascii
 ruoY ced_ ehpi gnir iks_ i_ll rg_s tae
-#+end_example
+#+end_export
 
-#+begin_example
+#+begin_export ascii
 Your _dec iphe ring _ski ll_i s_gr eat
-#+end_example
+#+end_export
 
-#+begin_example
+#+begin_export ascii
 Your_deciphering_skill_is_great
-#+end_example
+#+end_export
 
 #+begin_src C :cmdline ruoYced_ehpigniriks_i_llrg_stae 4 :results output silent :main no
 #include <stdio.h>
