@@ -205,6 +205,7 @@ Python で実行するとフラグが得られた。
 最後に格納される値である ~100~ は十進数なので、変換することを忘れずに。
 
 #+begin_src C :main no
+/* Ghidraの出力 */
 undefined4 main(void)
 
 {
@@ -229,7 +230,7 @@ undefined4 main(void)
   local_7c[0xd] = 100;
   puVar2 = local_7c + 0xe;
   for (iVar1 = 0xe; iVar1 != 0; iVar1 = iVar1 + -1) {
-    *puVar2 = 0;
+    ,*puVar2 = 0;
     puVar2 = puVar2 + 1;
   }
   for (local_84 = 0; local_84 < 0xe; local_84 = local_84 + 1) {
@@ -240,6 +241,7 @@ undefined4 main(void)
 #+end_src
 
 #+begin_src python :results output :exports both
+# 10進数から16進数に変換する
 print(hex(100))
 #+end_src
 
@@ -247,6 +249,7 @@ print(hex(100))
 : 0x64
 
 #+begin_src python :results output :exports both
+# ソルバー
 c = [0x7a, 0x69, 0x78, 0x6e, 0x62, 0x6f, 0x7c, 0x6b, 0x77, 0x78, 0x74, 0x38, 0x38, 0x64]
 
 for i in c:
@@ -255,3 +258,8 @@ for i in c:
 
 #+RESULTS:
 : cpaw{vernam!!}
+
+** 環境
+#+begin_example
+Ghidra 12.0.2
+#+end_example
