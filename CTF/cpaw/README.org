@@ -159,7 +159,7 @@ SELECT * FROM palloc_home;
 * TODO Can you login？
 まずはファイルの確認から。
 
-#+begin_src shell :results output
+#+begin_src shell :results output :exports both
 file can-you-login/network100_be557d01b0299a03dd3569893226dda424efc9a0.pcap
 #+end_src
 
@@ -186,7 +186,7 @@ CLOSED: [2026-04-09 木 23:46]
 
 とりあえずファイルを調べる。
 
-#+begin_src shell :results output
+#+begin_src shell :results output :exports both
 file again/rev200
 #+end_src
 
@@ -239,14 +239,14 @@ undefined4 main(void)
 }
 #+end_src
 
-#+begin_src python :results output
+#+begin_src python :results output :exports both
 print(hex(100))
 #+end_src
 
 #+RESULTS:
 : 0x64
 
-#+begin_src python :results output
+#+begin_src python :results output :exports both
 c = [0x7a, 0x69, 0x78, 0x6e, 0x62, 0x6f, 0x7c, 0x6b, 0x77, 0x78, 0x74, 0x38, 0x38, 0x64]
 
 for i in c:
