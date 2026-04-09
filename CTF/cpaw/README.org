@@ -131,3 +131,20 @@ int main(int argc, char* argv[]){
 }
 #+end_src
 
+
+* DONE Baby's SQLi - Stage 1-
+CLOSED: [2026-04-09 木 22:38]
+:LOGBOOK:
+- CLOSING NOTE [2026-04-09 木 22:38] \\
+  #+begin_verse
+  cpaw{palloc_escape_from_stage1;(}
+  #+end_verse
+:END:
+
+[[https://ctf.cpaw.site/questions.php?qnum=22][問題ページ]]
+
+[[https://ctf.spica.bz/baby_sql/]]にて、以下のコードを実行するとフラグを得られる。
+
+#+begin_src SQL
+SELECT * FROM palloc_home;
+#+end_src
