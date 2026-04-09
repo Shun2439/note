@@ -2,9 +2,9 @@
 CLOSED: [2026-04-08 水 20:44]
 :LOGBOOK:
 - CLOSING NOTE [2026-04-08 水 20:44] \\
-  #+begin_verse
+  #+begin_example
   cpaw{Caesar_cipher_is_classical_cipher}
-  #+end_verse
+  #+end_example
 :END:
 
 [[https://ctf.cpaw.site/questions.php?qnum=6][問題ページ]]
@@ -59,9 +59,9 @@ gcc --version|head -n 1
 CLOSED: [2026-04-09 木 22:04]
 :LOGBOOK:
 - CLOSING NOTE [2026-04-09 木 22:04] \\
-  #+begin_verse
+  #+begin_example
   cpaw{Your_deciphering_skill_is_great}
-  #+end_verse
+  #+end_example
 :END:
 
 [[https://ctf.cpaw.site/questions.php?qnum=20][問題ページ]]
@@ -92,21 +92,21 @@ int main(int argc, char* argv[]){
 よって、 ~key~ となる値は 4 であると推測でき、復号には暗号化したときと同様の処理が使えるので、与えられたプログラムにそれぞれ渡す。
 ちなみに手動で解くと以下のようになる。
 
-#+begin_verse
+#+begin_example
 ruoYced_ehpigniriks_i_llrg_stae
-#+end_verse
+#+end_example
 
-#+begin_verse
+#+begin_example
 ruoY ced_ ehpi gnir iks_ i_ll rg_s tae
-#+end_verse
+#+end_example
 
-#+begin_verse
+#+begin_example
 Your _dec iphe ring _ski ll_i s_gr eat
-#+end_verse
+#+end_example
 
-#+begin_verse
+#+begin_example
 Your_deciphering_skill_is_great
-#+end_verse
+#+end_example
 
 #+begin_src C :cmdline ruoYced_ehpigniriks_i_llrg_stae 4 :results output silent :main no
 #include <stdio.h>
