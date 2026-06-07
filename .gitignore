@@ -6,3 +6,4 @@
 *.org_archive
 *.swp
 
+/.direnv/
