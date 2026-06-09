@@ -2,10 +2,10 @@
 
 [[https://pwn.college/hacker/32606][My page]]
 
-* Lists [0/2]
+* Lists [0/3]
 - [ ] [[file:Pwntools-Tutorials.org][Pwntools Tutorials]]
 - [ ] [[file:Dealing-with-Data.org][Dealing with Data]]
-* TODO Path Traversal 1
+- [ ] [[file:Web-Security.org][Web Security]]
 * DONE File formats: Magic Numbers(Python)
 CLOSED: [2026-03-01 日 23:56]
 :LOGBOOK:
