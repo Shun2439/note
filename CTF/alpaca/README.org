@@ -1,16 +1,14 @@
-#+STARTUP: indent show2levels
-#+AUTHOR: Shun2439
+#+AUTHOR: [[https://alpacahack.com/users/shun2439][@shun2439 - AlpacaHack]]
 #+EMAIL: Shun2439@duck.com
 #+DATE: <2025-10-16 木>
 
-#+OPTIONS: H:1 author:nil
+#+OPTIONS: H:1
 
 * AlpacaHack [11/19]
 - Note taken on [2026-01-30 金 21:13] \\
   #+begin_src shell
     gem install pwn
   #+end_src
------
 - [X] [[AlpacaHack 2100]]
 - [X] [[a fact of CTF]]
 - [ ] Emojify
@@ -31,7 +29,7 @@
 - [X] [[file:bars/bars.org][Bars]]
 - [ ] [[simple-login]]
 - [ ] [[file:site2/site2.org][SITE/2]]
-** DONE AlpacaHack 2100
+** DONE COMMENT AlpacaHack 2100
 CLOSED: [2025-12-29 月 08:18]
 # <2025-12-02 火 20:18>
 
@@ -42,7 +40,7 @@ CLOSED: [2025-12-29 月 08:18]
 # 🚩: src_text[:exports code]{Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}}
 
 🚩: ~Alpaca{brought_AGI_to_humanity..._yes,_Alpaca_Gentle_Intelligence.}~
-** DONE [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
+** DONE COMMENT [[https://alpacahack.com/daily/challenges/a-fact-of-CTF][a fact of CTF]]
 CLOSED: [2025-12-29 月 08:41]
 
 #+begin_src shell
@@ -80,13 +78,13 @@ CLOSED: [2025-12-29 月 08:41]
 #+RESULTS: solver
 : Alpaca{prime_factorization_solves_everything}
 
-** TODO one-p-rsa
+** TODO COMMENT one-p-rsa
 #+begin_src shell
   curl -OL https://alpacahack-prod.s3.ap-northeast-1.amazonaws.com/b8b220dc-2d4a-4057-ac21-eb6ac57ccda5/one-p-rsa.tar.gz
 
   tar -xzf one-p-rsa.tar.gz
 #+end_src
-** TODO Linear Coffee Generator
+** TODO COMMENT Linear Coffee Generator
 #+begin_src python
   import os
   import hashlib
@@ -138,7 +136,7 @@ self.s = (self.a * (self.a * (self.a * (self.a * self.s + self.b) % self.p + sel
 Linear Congruential Generator
 
 a, b, p
-** TODO simple-login                                                :web:
+** TODO COMMENT simple-login                                                :web:
 :PROPERTIES:
 :CATEGORY: web
 :END:
