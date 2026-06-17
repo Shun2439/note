@@ -5,7 +5,7 @@
 
 #+OPTIONS: H:1 author:nil
 
-* AlpacaHack [11/18]
+* AlpacaHack [11/19]
 - Note taken on [2026-01-30 金 21:13] \\
   #+begin_src shell
     gem install pwn
@@ -30,6 +30,7 @@
 - [X] [[file:alpaillier/alpaillier.org][Alpaillier]]
 - [X] [[file:bars/bars.org][Bars]]
 - [ ] [[simple-login]]
+- [ ] [[file:site2/site2.org][SITE/2]]
 ** DONE AlpacaHack 2100
 CLOSED: [2025-12-29 月 08:18]
 # <2025-12-02 火 20:18>

@@ -1,0 +1,12 @@
+* SITE/2
+# <2026-06-15 月>
+
+#+begin_src shell :results output :wrap comment
+curl --http2-prior-knowledge http://34.170.146.252:52615/
+#+end_src
+
+#+RESULTS:
+#+begin_comment
+🦙 Welcome to my website 🦙
+Flag: Alpaca{sh0u1d_w3_h4v3_c0nn3ct3d?}
+#+end_comment
