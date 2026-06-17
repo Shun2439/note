@@ -264,9 +264,11 @@ CLOSED: [2026-06-17 水 09:28]
   ~pwn.college{k-6PQZhZ-9UkXJgtutEhoTH5Zt5.dVzN1YDL2AjNyMzW}~
   #+end_comment
 :END:
+#+begin_comment
 あなたには、被害者ユーザーがウェブサーバーを訪れるのを模擬したプログラムがあります。
+#+end_comment
 
-この問題では、 ~/challenge/victim~ で XSS が行われたか判定し、フラグが出力される。
+この問題では、 ~/challenge/victim~ で XSS が行われたかの判定とフラグの出力がされる。
 
 はじめに、 ~/challenge/server~ を起動させてから、 ~/challenge/victim~ を実行してみると以下のような出力が得られる。
 
@@ -310,6 +312,7 @@ curl -X POST -d "content=<input>" http://challenge.localhost
 
 #+NAME: exploit.py
 #+begin_src python :eval no
+# exploit.py
 #!/usr/bin/env python
 
 import requests
