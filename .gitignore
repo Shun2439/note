@@ -1,9 +1,11 @@
 /node_modules
 
-#Editor
+# Editor
 *~
 *#
 *.org_archive
 *.swp
 
 /.direnv/
+
+*.tar.gz
