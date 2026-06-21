@@ -1,0 +1,17 @@
+* Challenges [1/1]
+** DONE Connect
+CLOSED: [2026-06-21 日 22:29]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-21 日 22:29] \\
+  #+begin_comment
+  pwn.college{ootm3BhQTz6G2o2OuuBRwb0LTLA.dlTNzMDL2AjNyMzW}
+  #+end_comment
+:END:
+
+#+begin_src shell
+/challenge/run
+#+end_src
+
+#+begin_src shell
+nc 10.0.0.2 31337
+#+end_src

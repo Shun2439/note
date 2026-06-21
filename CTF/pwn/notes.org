@@ -2,10 +2,11 @@
 
 [[https://pwn.college/hacker/32606][My page]]
 
-* Lists [0/3]
+* Lists [0/4]
 - [ ] [[file:Pwntools-Tutorials.org][Pwntools Tutorials]]
 - [ ] [[file:Dealing-with-Data.org][Dealing with Data]]
 - [ ] [[file:Web-Security.org][Web Security]]
+- [ ] [[file:Intercepting-Communication.org][Intercepting Communication]]
 * DONE File formats: Magic Numbers(Python)
 CLOSED: [2026-03-01 日 23:56]
 :LOGBOOK:
@@ -33,4 +34,25 @@ echo -n "<MAG" >> solution.cimg
 
 * implicit relative paths, from /
 # implicit,暗黙の
+* Notes
+:LOGBOOK:
+- Note taken on [2026-06-09 火 21:47] \\
+  Unknown flags
+
+  #+begin_example
+  pwn.college{gGFhf1ZBPHXo1_JgRlYmfHMg0dJ.0VM2EDL2AjNyMzW}
+  #+end_example
+
+  #+begin_example
+  pwn.college{gGFhf1ZBPHXo1_JgRlYmfHMg0dJ.0VM2EDL2AjNyMzW}
+  #+end_example
+
+  #+begin_example
+  pwn.college{8NRtc6rw3fhF5QlZK_e_RLbNo4y.dNzM4QDL2AjNyMzW}
+  #+end_example
+- Note taken on [2026-06-08 月 23:16] \\
+  <2026-04-02 木>
+  # ...
+  [[Path Traversal 1]]
+:END:
 
