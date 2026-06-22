@@ -1,4 +1,4 @@
-* Challenges [1/1]
+* Challenges [2/2]
 ** DONE Connect
 CLOSED: [2026-06-21 日 22:29]
 :LOGBOOK:
@@ -14,4 +14,20 @@ CLOSED: [2026-06-21 日 22:29]
 
 #+begin_src shell
 nc 10.0.0.2 31337
+#+end_src
+** DONE Send
+CLOSED: [2026-06-22 月 23:35]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-22 月 23:35] \\
+  #+begin_comment
+  pwn.college{kt_y2QvEFdR71i-2Xl_TkqJVoyA.QX1IDM2EDL2AjNyMzW}
+  #+end_comment
+:END:
+
+#+begin_src shell
+/challenge/run
+
+nc 10.0.0.2 31337
+
+Hello, World!
 #+end_src
