@@ -344,7 +344,14 @@ Welcome to pwnpost, the anonymous posting service. Post away!
 <hr><input>
 </body></html>
 #+end_example
-** TODO XSS 2
+** DONE XSS 2
+CLOSED: [2026-06-18 木 13:53]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-18 木 13:53] \\
+  #+begin_comment
+  pwn.college{wb9eK5A0nmpYrr1tgegOpM8jeYn.ddzN1YDL2AjNyMzW}
+  #+end_comment
+:END:
 ** TODO XSS 3
 ** TODO XSS 4
 ** TODO XSS 5
