@@ -1,4 +1,4 @@
-* Challenges [3/3]
+* Challenges [4/16]
 ** DONE Connect
 CLOSED: [2026-06-21 日 22:29]
 :LOGBOOK:
@@ -42,3 +42,37 @@ CLOSED: [2026-06-23 火 23:30]
 #+begin_src shell
 echo "" | nc -N 10.0.0.2 31337
 #+end_src
+** DONE Listen
+CLOSED: [2026-06-24 水 23:28]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-24 水 23:28] \\
+  #+begin_comment
+  pwn.college{Ypf9yytN501MhdgffTmk72jrZZ-.dBjNzMDL2AjNyMzW}
+  #+end_comment
+- Note taken on [2026-06-24 水 23:24] \\
+  9736th
+:END:
+
+2 つの接続を用意し、 どちらとも ~/challenge/run~ を実行する。
+そのうえで、以下のコマンドを listen するほうからそれぞれ実行する。
+すると listen しているほうにフラグが表示される。
+
+#+begin_src shell :eval no
+nc -l 31337
+#+end_src
+
+#+begin_src shell :eval no
+nc 10.0.0.2 31337
+#+end_src
+** TODO Scan 1
+** TODO Scan 2
+** TODO Monitor 1
+** TODO Monitor 2
+** TODO Sniffing Cookies
+** TODO Network Configuration
+** TODO Firewall 1
+** TODO Firewall 2
+** TODO Firewall 3
+** TODO Denial of Service 1
+** TODO Denial of Service 2
+** TODO Denial of Service 3
