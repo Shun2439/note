@@ -1,4 +1,4 @@
-* Challenges [4/16]
+* Challenges [5/16]
 ** DONE Connect
 CLOSED: [2026-06-21 日 22:29]
 :LOGBOOK:
@@ -64,7 +64,33 @@ nc -l 31337
 #+begin_src shell :eval no
 nc 10.0.0.2 31337
 #+end_src
-** TODO Scan 1
+** DONE Scan 1
+CLOSED: [2026-06-29 月 21:05]
+:LOGBOOK:
+- CLOSING NOTE [2026-06-29 月 21:05] \\
+  #+begin_comment
+  pwn.college{QXGJjETXIz7eH3BTmJjvOggVCZt.dFjNzMDL2AjNyMzW}
+  #+end_comment
+- Note taken on [2026-06-29 月 13:35] \\
+  will be attempted?
+:END:
+
+#+begin_src shell
+#!/usr/bin/env bash
+# Run this after execute /challenge/run
+
+for i in $(seq 2 254); do
+	ping -c 1 -W 1 10.0.0.$i > /dev/null 2>&1 && echo "Active: 10.0.0.$i" &
+done
+
+wait
+#+end_src
+
+#+begin_comment
+#+begin_src shell
+nc 10.0.0.181 31337
+#+end_src
+#+end_comment
 ** TODO Scan 2
 ** TODO Monitor 1
 ** TODO Monitor 2
