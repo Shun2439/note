@@ -1,4 +1,4 @@
-* Challenges [5/16]
+* Challenges [7/16]
 ** DONE Connect
 CLOSED: [2026-06-21 日 22:29]
 :LOGBOOK:
@@ -92,7 +92,30 @@ nc 10.0.0.181 31337
 #+end_src
 #+end_comment
 ** TODO Scan 2
-** TODO Monitor 1
+** DONE Monitor 1
+CLOSED: <2026-07-01 水 09:55>
+:LOGBOOK:
+- Note taken on [2026-07-01 水 09:52] \\
+  これが使えそう
+
+  #+begin_quote
+  -A     Print each packet (minus its link level header) in ASCII.  Handy for capturing web pages.
+  #+end_quote
+
+  これはなに？
+
+  #+begin_quote
+  -dd    Dump packet-matching code as a C program fragment.
+  #+end_quote
+- CLOSING NOTE <2026-07-01 水 09:55> \\
+  #+begin_comment
+  pwn.college{0HsZ55cdQL3sPM1gHeaU0PtaKPH.dNjNzMDL2AjNyMzW}
+  #+end_comment
+:END:
+
+#+begin_src shell
+tcpdump -i any port 31337 -A
+#+end_src
 ** TODO Monitor 2
 ** TODO Sniffing Cookies
 ** TODO Network Configuration
