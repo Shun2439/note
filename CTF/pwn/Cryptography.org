@@ -1,0 +1,14 @@
+* Symmetric Cryptography [1/1]
+** DONE XOR
+CLOSED: [2026-07-07 火 17:26]
+:LOGBOOK:
+- CLOSING NOTE [2026-07-07 火 17:26] \\
+  #+begin_comment
+  pwn.college{MpmGi92sbZ1gF7vzx-aQ7t8DOPr.ddjM3kDL2AjNyMzW}
+  #+end_comment
+:END:
+#+begin_src python :results output silent :exports code
+key = 234
+enc = 92
+print(key ^ enc)
+#+end_src

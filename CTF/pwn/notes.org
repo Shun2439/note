@@ -2,11 +2,12 @@
 
 [[https://pwn.college/hacker/32606][My page]]
 
-* Lists [0/4]
+* Lists [0/5]
 - [ ] [[file:Pwntools-Tutorials.org][Pwntools Tutorials]]
 - [ ] [[file:Dealing-with-Data.org][Dealing with Data]]
 - [ ] [[file:Web-Security.org][Web Security]]
 - [ ] [[file:Intercepting-Communication.org][Intercepting Communication]]
+- [ ] [[file:Cryptography.org][Cryptography]]
 * DONE File formats: Magic Numbers(Python)
 CLOSED: [2026-03-01 日 23:56]
 :LOGBOOK:
