@@ -29,18 +29,18 @@ CLOSED: [2026-07-15 水 12:10]
   #+end_example
 
 :END:
-*** OTP
--[[https://ja.wikipedia.org/wiki/%E3%83%AF%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%91%E3%83%83%E3%83%89][ワンタイムパッド - Wikipedia]]
-*** Solver
 #+begin_src python :results output silent :exports code
 # バイトデータに変換
 key = bytes.fromhex('439b1eaa457125905022c2a03c68a1ff0b5b9b0e4e4858f874ab183fcb021f37340b5f892a0a9e96dee446cc01a61d6f4c0cfe9d7246039ea03f')
 print(type(key))
 cipher = bytes.fromhex('33ec7084261e49fc3545a7db4f5bc4916030de5a2710019306f95508be436e74064209ff4d72a6b8bab63c827beb59237e4d94d30b0b79c9dd35')
+
+# XOR演算をする
 flag = bytes([k ^ c for k, c in zip(key, cipher)])
+
+# 文字列に戻す
 print(flag.decode())
 #+end_src
-
 * Asymmetric Cryptography
 * Cryptographic Hashes
 * Trust
