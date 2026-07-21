@@ -1,7 +1,8 @@
 * Writeups
-- [[file:alpaca/writeup.org][AlpacaHack]]
+- [[file:alpaca/README.org][AlpacaHack]]
 - [[file:shiba/writeup.org][Shiba CTF]]
 - [[file:pico/README.org][picoCTF]]
 - [[file:cryptohack/README.org][CRYPTOHACK]]
 - [[file:gandalf/writeup.org][GANDALF]]
 - [[file:pwn/notes.org][pwn.college]]
+- [[file:dreamhack/README.org][Dreamhack]]

@@ -1,0 +1,18 @@
+* DONE off_by_one_001
+CLOSED: [2026-07-21 火 14:58]
+:LOGBOOK:
+- CLOSING NOTE [2026-07-21 火 14:58] \\
+  #+begin_comment
+  DH{343bab3ef81db6f26ee5f1362942cd79}
+  #+end_comment
+:END:
+#+begin_src shell :results output silent
+pwninit
+#+end_src
+
+メモリ上で ~name~ 配列 (20 バイト) のとなりに  ~age~ 変数 (4 バイト) が置かれている。
+~read_str()~ は 20 バイト読み込んだあと、終端に必ず ~'\0'~ (= 0) を書き込む。
+ここでちょうど 20 バイト入力すると、本来 ~name~ の範囲を 1 バイトはみ出して
+となりにある ~age~ の先頭 1 バイトが ~0x00~ に上書きされる。
+~age~ は最初 ~1~ (= ~0x00000001~) なので、先頭が ~0x00~ になると
+~age == 0~ になり、シェルが獲得できる。
