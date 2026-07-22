@@ -1,0 +1,29 @@
+* DONE ROT128
+CLOSED: [2026-07-22 水 16:39]
+:LOGBOOK:
+- CLOSING NOTE [2026-07-22 水 16:39] \\
+  #+begin_comment
+  DH{y0u_So1ved_basic_cryp7o_How_wa5_1t?}
+  #+end_comment
+:END:
+#+begin_src python :results none
+# リストの生成
+hex_list = [(hex(i)[2:].zfill(2).upper()) for i in range(256)]
+
+# ファイルの読み込み
+with open('encfile', 'r', encoding='utf-8') as f:
+    enc_hex = f.read()
+
+enc_bytes = [enc_hex[i:i+2] for i in range(0, len(enc_hex), 2)]
+
+plain_list = list(range(len(enc_bytes)))
+for i in range(len(enc_bytes)):
+    hex_b = enc_bytes[i]
+    index = hex_list.index(hex_b)
+    plain_list[i] = hex_list[(index + 128) % len(hex_list)]
+
+plain_s = bytes([int(x, 16) for x in plain_list])
+
+with open('flag.png', 'wb') as f:
+    f.write(plain_s)
+#+end_src
