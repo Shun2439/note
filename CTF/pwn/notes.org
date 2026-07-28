@@ -2,13 +2,14 @@
 
 [[https://pwn.college/hacker/32606][My page]]
 
-* Lists [0/5]
+* Lists [0/6]
 - [ ] [[file:Pwntools-Tutorials.org][Pwntools Tutorials]]
 - [ ] [[file:Dealing-with-Data.org][Dealing with Data]]
 - [ ] [[file:Web-Security.org][Web Security]]
 - [ ] [[file:Intercepting-Communication.org][Intercepting Communication]]
 - [ ] [[file:Cryptography.org][Cryptography]]
-* DONE File formats: Magic Numbers(Python)
+- [ ] [[file:Program-Exploitation.org][Program Exploitation]]
+* DONE COMMENT File formats: Magic Numbers(Python)
 CLOSED: [2026-03-01 日 23:56]
 :LOGBOOK:
 - CLOSING NOTE [2026-03-01 日 23:56] \\
@@ -33,24 +34,24 @@ echo -n "<MAG" >> solution.cimg
 /challenge/cimg solution.cimg
 #+end_src
 
-* implicit relative paths, from /
+* COMMENT implicit relative paths, from /
 # implicit,暗黙の
-* Notes
+* COMMENT Notes
 :LOGBOOK:
 - Note taken on [2026-06-09 火 21:47] \\
-  Unknown flags
+  # Unknown flags
 
-  #+begin_example
+  #+begin_comment
   pwn.college{gGFhf1ZBPHXo1_JgRlYmfHMg0dJ.0VM2EDL2AjNyMzW}
-  #+end_example
+  #+end_comment
 
-  #+begin_example
+  #+begin_comment
   pwn.college{gGFhf1ZBPHXo1_JgRlYmfHMg0dJ.0VM2EDL2AjNyMzW}
-  #+end_example
+  #+end_comment
 
-  #+begin_example
+  #+begin_comment
   pwn.college{8NRtc6rw3fhF5QlZK_e_RLbNo4y.dNzM4QDL2AjNyMzW}
-  #+end_example
+  #+end_comment
 - Note taken on [2026-06-08 月 23:16] \\
   <2026-04-02 木>
   # ...
