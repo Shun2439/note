@@ -1,0 +1,10 @@
+* Riddle
+:LOGBOOK:
+- Note taken on [2026-08-05 水 20:18] \\
+  #+begin_src shell :results output
+  file Riddle.exe
+  #+end_src
+
+  #+RESULTS:
+  : Riddle.exe: PE32 executable for MS Windows 5.01 (GUI), Intel i386, 5 sections
+:END:

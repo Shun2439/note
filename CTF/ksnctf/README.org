@@ -1,0 +1,24 @@
+* ksnctf [0/11]
+:LOGBOOK:
+- Note taken on [2026-08-05 水 20:25] \\
+  #+begin_quote
+  フラグの文字列は公開しないこと
+  #+end_quote
+
+  #+begin_quote
+  Attacks are only allowed to ctfq.u1tramarine.blue.
+  #+end_quote
+:END:
+[[https://ksnctf.sweetduet.info/][ksnctf]]
+
+1. [ ] Test Probem
+2. [ ] Easy Cipher
+3. [ ] Crawling Chaos
+4. [ ] Villager A
+5. [ ] Onion
+6. [ ] Login
+7. [ ] Programming
+8. [ ] Basic is secure?
+9. [ ] Digest is secure!
+10. [ ] #!
+11. [ ] [[file:Riddle/README.org][Riddle]]
