@@ -1,4 +1,4 @@
-* ksnctf [0/11]
+* ksnctf [3/11]
 :LOGBOOK:
 - Note taken on [2026-08-05 水 20:25] \\
   #+begin_quote
@@ -11,14 +11,14 @@
 :END:
 [[https://ksnctf.sweetduet.info/][ksnctf]]
 
-1. [ ] Test Probem
+1. [X] Test Probem
 2. [ ] Easy Cipher
 3. [ ] Crawling Chaos
 4. [ ] Villager A
-5. [ ] Onion
+5. [ ] [[file:Onion.org][Onion]]
 6. [ ] Login
 7. [ ] Programming
-8. [ ] Basic is secure?
+8. [X] [[file:basic-is-secure/README.org][Basic is secure?]]
 9. [ ] Digest is secure!
-10. [ ] #!
+10. [X] #!
 11. [ ] [[file:Riddle/README.org][Riddle]]

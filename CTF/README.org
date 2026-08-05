@@ -6,3 +6,4 @@
 - [[file:gandalf/writeup.org][GANDALF]]
 - [[file:pwn/notes.org][pwn.college]]
 - [[file:dreamhack/README.org][Dreamhack]]
+- [[file:ksnctf/README.org][ksnctf]]

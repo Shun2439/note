@@ -1,0 +1,12 @@
+* Basic is secure?
+:LOGBOOK:
+- Note taken on [2026-08-05 水 21:23] \\
+  #+begin_src shell :results output
+  file q8.pcap
+  #+end_src
+
+  #+RESULTS:
+  : q8.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Ethernet, capture length 65535)
+:END:
+
+~strings~ で怪しげな文字列を発見できるので、[[https://gchq.github.io/CyberChef/][CyberChef]]に入力するとフラグを得られる。
